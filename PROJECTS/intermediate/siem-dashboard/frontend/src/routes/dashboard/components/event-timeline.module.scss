@@ -10,13 +10,198 @@
   border: 1px solid $border-default;
   border-radius: $radius-md;
   padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
 }
 
 .title {
   font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
+  font-weight: 600;
   color: $text-light;
-  margin-bottom: $space-4;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.liveBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: hsla(142, 70%, 45%, 0.12);
+  border: 1px solid hsla(142, 70%, 45%, 0.3);
+  color: #4ade80;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #22c55e;
+  animation: pulseBeacon 2s infinite ease-in-out;
+}
+
+@keyframes pulseBeacon {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 10px #22c55e;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.offsetBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: hsla(38, 92%, 50%, 0.15);
+  border: 1px solid hsla(38, 92%, 50%, 0.35);
+  color: #fbbf24;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3;
+}
+
+.presetGroup {
+  display: flex;
+  background-color: $bg-surface-200;
+  border: 1px solid $border-default;
+  border-radius: $radius-sm;
+  padding: 2px;
+  gap: 2px;
+}
+
+.presetBtn {
+  background: transparent;
+  border: none;
+  color: $text-muted;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: $text-light;
+    background-color: hsla(0, 0%, 100%, 0.05);
+  }
+
+  &.active {
+    background-color: hsla(217, 91%, 60%, 0.2);
+    color: #60a5fa;
+    border: 1px solid hsla(217, 91%, 60%, 0.4);
+    box-shadow: 0 0 8px hsla(217, 91%, 60%, 0.2);
+  }
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  background-color: $bg-surface-200;
+  border: 1px solid $border-default;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.navBtn {
+  background: transparent;
+  border: none;
+  color: $text-muted;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background-color: hsla(0, 0%, 100%, 0.08);
+    color: $text-light;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  &.liveBtn {
+    color: #60a5fa;
+    font-weight: 600;
+    border-left: 1px solid $border-default;
+    border-right: 1px solid $border-default;
+
+    &:hover {
+      background-color: hsla(217, 91%, 60%, 0.15);
+    }
+  }
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: $text-muted;
+  padding-bottom: $space-1;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.04);
+}
+
+.clockBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: monospace;
+  color: hsl(215, 20%, 75%);
+}
+
+.eventCountBadge {
+  font-weight: 600;
+  color: hsl(215, 20%, 85%);
+  background-color: hsla(0, 0%, 100%, 0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid hsla(0, 0%, 100%, 0.08);
 }
 
 .chart {
@@ -24,9 +209,33 @@
   height: 280px;
 }
 
+.emptyState {
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $text-muted;
+  font-size: 13px;
+  gap: $space-2;
+}
+
 .skeleton {
   width: 100%;
   height: 280px;
   background-color: $bg-surface-200;
   border-radius: $radius-sm;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }

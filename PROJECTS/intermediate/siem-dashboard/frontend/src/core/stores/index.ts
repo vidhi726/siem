@@ -6,3 +6,4 @@
 export * from './auth.store'
 export * from './stream.store'
 export * from './ui.store'
+export * from './notification.store'

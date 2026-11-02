@@ -90,3 +90,13 @@ def test_rule(rule_id: str) -> Any:
     Test a rule against historical log events
     """
     return rule_ctrl.test_rule(rule_id)
+
+
+@rules_bp.get("/<rule_id>/sigma")
+@endpoint()
+@R()
+def get_rule_sigma(rule_id: str) -> Any:
+    """
+    Return the Sigma standard YAML representation for a correlation rule
+    """
+    return rule_ctrl.get_sigma_rule(rule_id)

@@ -3,19 +3,6 @@
 dashboard_ctrl.py
 
 Business logic for dashboard aggregations
-
-Provides the overview summary (event and alert counts, open alert
-count, severity breakdown), time-bucketed event timeline, per-severity
-event counts, and top source IPs. All calls are read-only MongoDB
-aggregation queries with no side effects.
-
-Key exports:
-  overview, timeline, severity_breakdown, top_sources
-
-Connects to:
-  models/Alert.py - alert count and status aggregations
-  models/LogEvent.py - timeline, severity, and top source queries
-  routes/dashboard.py - called from route handlers
 """
 
 from typing import Any
@@ -62,6 +49,7 @@ def timeline() -> list[dict[str, Any]]:
     return LogEvent.timeline_aggregation(
         hours=params.hours,
         bucket_minutes=params.bucket_minutes,
+        offset_days=getattr(params, "offset_days", 0),
     )
 
 

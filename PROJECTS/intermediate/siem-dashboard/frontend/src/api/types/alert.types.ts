@@ -3,21 +3,6 @@
 // alert.types.ts
 //
 // Zod schemas and types for alert list, detail, and SSE stream responses
-//
-// Exports the main alertSchema for paginated list data, alertDetailSchema
-// that includes matched log events, and the lighter streamAlertEventSchema
-// used by the SSE feed. Each schema has a companion type alias and runtime
-// type guard.
-//
-// Key exports:
-//   alertSchema, Alert - full alert document type
-//   alertDetailSchema, AlertDetail - alert plus matched log events
-//   streamAlertEventSchema, StreamAlertEvent - compact SSE payload type
-//   AlertStatusUpdateRequest - mutation payload for status changes
-//
-// Connects to:
-//   log.types.ts - imports logEventSchema for alertDetailSchema
-//   useAlerts.ts, useEventStream.ts - consume these types
 // ===================
 
 import { z } from 'zod'
@@ -46,6 +31,14 @@ export const alertSchema = z.object({
 export const alertDetailSchema = z.object({
   alert: alertSchema,
   matched_events: z.array(logEventSchema),
+  threat_intel: z.record(z.string(), z.any()).optional(),
+  soar_actions: z.array(z.record(z.string(), z.any())).optional(),
+  is_contained: z.boolean().optional(),
+  evidence_hash: z.record(z.string(), z.any()).optional(),
+  ueba_analysis: z.record(z.string(), z.any()).optional(),
+  kill_chain: z.record(z.string(), z.any()).optional(),
+  sigma_yaml: z.string().optional(),
+  forensic_report: z.string().optional(),
 })
 
 export const streamAlertEventSchema = z.object({
@@ -65,6 +58,11 @@ export type StreamAlertEvent = z.infer<typeof streamAlertEventSchema>
 export interface AlertStatusUpdateRequest {
   status: string
   notes?: string
+}
+
+export interface SoarActionExecuteRequest {
+  action: string
+  target?: string
 }
 
 export interface AlertQueryParams {

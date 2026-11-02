@@ -1,0 +1,256 @@
+// ===================
+// notification-bell.module.scss
+// ===================
+
+@use '@/styles' as *;
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bellBtn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  background: $bg-surface-200;
+  border: 1px solid $border-default;
+  color: $text-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  @include transition-fast;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @include hover {
+    background: $bg-surface-300;
+    color: $text-default;
+    border-color: $border-strong;
+  }
+
+  &.active {
+    color: $accent;
+    border-color: $accent;
+    background: $bg-surface-300;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: $severity-critical;
+  color: #fff;
+  font-size: 11px;
+  font-weight: $font-weight-semibold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.9;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  max-height: 480px;
+  background: $bg-surface-100;
+  border: 1px solid $border-strong;
+  border-radius: $radius-lg;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3 $space-4;
+  border-bottom: 1px solid $border-default;
+  background: $bg-surface-200;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $text-default;
+}
+
+.headerBadge {
+  padding: 1px 6px;
+  border-radius: $radius-sm;
+  background: $severity-high-bg;
+  color: $severity-high;
+  font-size: 11px;
+  font-weight: $font-weight-medium;
+}
+
+.clearBtn {
+  background: transparent;
+  border: none;
+  color: $text-lighter;
+  font-size: $font-size-xs;
+  cursor: pointer;
+  @include transition-fast;
+
+  @include hover {
+    color: $text-default;
+    text-decoration: underline;
+  }
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: $space-2;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: $space-3;
+  border-radius: $radius-md;
+  background: $bg-surface-200;
+  border: 1px solid $border-default;
+  text-decoration: none;
+  cursor: pointer;
+  @include transition-fast;
+
+  &.unread {
+    border-left: 3px solid $severity-high;
+    background: rgba(239, 68, 68, 0.05);
+  }
+
+  &.critical {
+    &.unread {
+      border-left: 3px solid $severity-critical;
+    }
+  }
+
+  @include hover {
+    background: $bg-surface-300;
+    border-color: $border-strong;
+  }
+}
+
+.itemTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.severityTag {
+  font-size: 10px;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 3px;
+
+  &.critical {
+    color: $severity-critical;
+    background: $severity-critical-bg;
+  }
+
+  &.high {
+    color: $severity-high;
+    background: $severity-high-bg;
+  }
+}
+
+.soundTag {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  color: $accent;
+}
+
+.repeatTag {
+  font-size: 10px;
+  color: #fbbf24;
+  font-weight: $font-weight-semibold;
+}
+
+.itemTitle {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $text-default;
+  line-height: 1.4;
+}
+
+.itemMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: $text-lighter;
+  margin-top: 2px;
+}
+
+.ruleName {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.time {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.empty {
+  padding: $space-6;
+  text-align: center;
+  color: $text-muted;
+  font-size: $font-size-xs;
+}

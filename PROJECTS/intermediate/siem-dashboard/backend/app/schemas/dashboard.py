@@ -3,17 +3,6 @@
 dashboard.py
 
 Pydantic schemas for dashboard query endpoints
-
-Minimal schemas for timeline and top-sources endpoints carrying only
-the window and limit parameters with sensible defaults from config.
-
-Key exports:
-  TimelineParams - hours window and bucket size for timeline aggregation
-  TopSourcesParams - result count limit for top source IPs
-
-Connects to:
-  config.py - reads TIMELINE_DEFAULT_HOURS, TIMELINE_BUCKET_MINUTES, TOP_SOURCES_LIMIT
-  routes/dashboard.py - passed to S()
 """
 
 from pydantic import BaseModel, Field
@@ -32,6 +21,10 @@ class TimelineParams(BaseModel):
     bucket_minutes: int = Field(
         default=settings.TIMELINE_BUCKET_MINUTES,
         ge=1,
+    )
+    offset_days: int = Field(
+        default=0,
+        ge=0,
     )
 
 

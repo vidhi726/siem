@@ -19,8 +19,8 @@
 // ===================
 
 import { useCallback, useState } from 'react'
-import { LuFlaskConical, LuPlus, LuTrash2, LuX } from 'react-icons/lu'
-import { useCreateRule, useDeleteRule, useRules, useTestRule } from '@/api/hooks'
+import { LuCheck, LuCopy, LuFlaskConical, LuPlus, LuTrash2, LuX } from 'react-icons/lu'
+import { useCreateRule, useDeleteRule, useRuleSigma, useRules, useTestRule } from '@/api/hooks'
 import type { CorrelationRule } from '@/api/types'
 import styles from './rules.module.scss'
 
@@ -112,6 +112,7 @@ function RuleCard({
               {JSON.stringify(rule.conditions, null, 2)}
             </pre>
           </div>
+          <SigmaViewer ruleId={rule.id} />
           <div className={styles.btnGroup}>
             <button
               type="button"
@@ -280,5 +281,67 @@ function RuleForm({ onClose }: { onClose: () => void }): React.ReactElement {
         </button>
       </div>
     </form>
+  )
+}
+
+
+function SigmaViewer({ ruleId }: { ruleId: string }): React.ReactElement | null {
+  const { data, isLoading } = useRuleSigma(ruleId)
+  const [copied, setCopied] = useState(false)
+
+  if (isLoading) {
+    return <div style={{ fontSize: 11, color: '#9ba3af', padding: '6px 0' }}>Generating Sigma standard definition...</div>
+  }
+  if (!data?.sigma_yaml) return null
+
+  const handleCopy = () => {
+    void navigator.clipboard.writeText(data.sigma_yaml)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1500)
+  }
+
+  return (
+    <div style={{ marginTop: 12, marginBottom: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+        <span style={{ fontSize: 11, color: '#9ba3af', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
+          Sigma Detection Rule Standard (YAML)
+        </span>
+        <button
+          type="button"
+          onClick={handleCopy}
+          style={{
+            fontSize: 11,
+            padding: '3px 8px',
+            borderRadius: 4,
+            background: 'hsl(0, 0%, 16%)',
+            border: '1px solid hsl(0, 0%, 22%)',
+            color: '#fff',
+            cursor: 'pointer',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 4,
+          }}
+        >
+          {copied ? <LuCheck size={12} color="#4ade80" /> : <LuCopy size={12} />}
+          <span>{copied ? 'Copied!' : 'Copy Sigma YAML'}</span>
+        </button>
+      </div>
+      <pre
+        style={{
+          fontFamily: 'JetBrains Mono, monospace',
+          fontSize: 11,
+          padding: 12,
+          background: 'hsl(0, 0%, 5.9%)',
+          border: '1px solid hsl(0, 0%, 18%)',
+          borderRadius: 4,
+          color: '#e2e8f0',
+          whiteSpace: 'pre-wrap',
+          maxHeight: 180,
+          overflowY: 'auto',
+        }}
+      >
+        {data.sigma_yaml}
+      </pre>
+    </div>
   )
 }

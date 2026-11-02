@@ -51,12 +51,15 @@ export const API_ENDPOINTS = {
     LIST: `/${API_VERSION}/alerts`,
     BY_ID: (id: string) => `/${API_VERSION}/alerts/${id}`,
     STATUS: (id: string) => `/${API_VERSION}/alerts/${id}/status`,
+    SOAR: (id: string) => `/${API_VERSION}/alerts/${id}/soar`,
+    MITRE_MATRIX: `/${API_VERSION}/alerts/mitre-matrix`,
     STREAM: `/${API_VERSION}/alerts/stream`,
   },
   RULES: {
     LIST: `/${API_VERSION}/rules`,
     CREATE: `/${API_VERSION}/rules`,
     BY_ID: (id: string) => `/${API_VERSION}/rules/${id}`,
+    SIGMA: (id: string) => `/${API_VERSION}/rules/${id}/sigma`,
     UPDATE: (id: string) => `/${API_VERSION}/rules/${id}`,
     DELETE: (id: string) => `/${API_VERSION}/rules/${id}`,
     TEST: (id: string) => `/${API_VERSION}/rules/${id}/test`,
@@ -80,8 +83,8 @@ export const QUERY_KEYS = {
   DASHBOARD: {
     ALL: ['dashboard'] as const,
     OVERVIEW: () => [...QUERY_KEYS.DASHBOARD.ALL, 'overview'] as const,
-    TIMELINE: (hours: number, bucket: number) =>
-      [...QUERY_KEYS.DASHBOARD.ALL, 'timeline', { hours, bucket }] as const,
+    TIMELINE: (hours: number, bucket: number, offsetDays = 0) =>
+      [...QUERY_KEYS.DASHBOARD.ALL, 'timeline', { hours, bucket, offsetDays }] as const,
     SEVERITY: () => [...QUERY_KEYS.DASHBOARD.ALL, 'severity'] as const,
     TOP_SOURCES: (limit: number) =>
       [...QUERY_KEYS.DASHBOARD.ALL, 'top-sources', { limit }] as const,
@@ -98,14 +101,20 @@ export const QUERY_KEYS = {
   },
   ALERTS: {
     ALL: ['alerts'] as const,
-    LIST: (page: number, size: number) =>
-      [...QUERY_KEYS.ALERTS.ALL, 'list', { page, size }] as const,
+    LIST: (params?: unknown, size?: number) =>
+      [
+        ...QUERY_KEYS.ALERTS.ALL,
+        'list',
+        typeof params === 'object' && params !== null ? params : { page: params, size },
+      ] as const,
     BY_ID: (id: string) => [...QUERY_KEYS.ALERTS.ALL, 'detail', id] as const,
+    MITRE_MATRIX: () => [...QUERY_KEYS.ALERTS.ALL, 'mitre_matrix'] as const,
   },
   RULES: {
     ALL: ['rules'] as const,
     LIST: () => [...QUERY_KEYS.RULES.ALL, 'list'] as const,
     BY_ID: (id: string) => [...QUERY_KEYS.RULES.ALL, 'detail', id] as const,
+    SIGMA: (id: string) => [...QUERY_KEYS.RULES.ALL, 'sigma', id] as const,
   },
   SCENARIOS: {
     ALL: ['scenarios'] as const,

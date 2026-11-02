@@ -355,3 +355,278 @@
   font-family: 'JetBrains Mono', monospace;
   color: $text-lighter;
 }
+
+.alertItemWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  width: 100%;
+}
+
+.inlineDetail {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+// ============================================
+// Enterprise SOC & Security Specialist Additions
+// ============================================
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  margin-bottom: $space-2;
+}
+
+.mitreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: $radius-md;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #60a5fa;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  @include transition-fast;
+
+  &:hover {
+    background: rgba(59, 130, 246, 0.28);
+    border-color: rgba(59, 130, 246, 0.6);
+  }
+}
+
+.card {
+  &.criticalGlow {
+    border-color: rgba(239, 68, 68, 0.45);
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.2);
+  }
+  &.highGlow {
+    border-color: rgba(249, 115, 22, 0.4);
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.15);
+  }
+}
+
+.copyableIoc {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border-radius: $radius-xs;
+  padding: 1px 4px;
+  @include transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.socSection {
+  margin-top: $space-4;
+  padding: $space-4;
+  border-radius: $radius-md;
+  background: $bg-surface-200;
+  border: 1px solid $border-default;
+}
+
+.sectionTitle {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $text-default;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-3;
+}
+
+.tiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $space-3;
+}
+
+.tiStat {
+  background: $bg-surface-100;
+  padding: $space-2 $space-3;
+  border-radius: $radius-sm;
+  border: 1px solid $border-default;
+
+  .tiLabel {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: $text-lighter;
+  }
+  .tiVal {
+    font-size: 12px;
+    font-weight: $font-weight-semibold;
+    color: $text-default;
+    margin-top: 2px;
+  }
+}
+
+.tiLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  margin-top: $space-3;
+}
+
+.tiLinkBtn {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: $radius-sm;
+  background: $bg-surface-300;
+  border: 1px solid $border-default;
+  color: $text-light;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  @include transition-fast;
+
+  &:hover {
+    color: #fff;
+    border-color: $accent;
+    background: $bg-surface-200;
+  }
+}
+
+.soarBox {
+  margin-top: $space-4;
+  padding: $space-4;
+  border-radius: $radius-md;
+  background: rgba(239, 68, 68, 0.04);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.soarActionsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  margin-top: $space-2;
+}
+
+.soarActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: $radius-sm;
+  font-size: 11px;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  background: $bg-surface-300;
+  border: 1px solid $border-default;
+  color: $text-default;
+  @include transition-fast;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+  }
+
+  &.contained {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: rgba(34, 197, 94, 0.5);
+    color: #4ade80;
+  }
+}
+
+.killChainProgress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $space-4;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: $border-default;
+    z-index: 0;
+  }
+}
+
+.killChainStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 1;
+  text-align: center;
+}
+
+.killChainNode {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: $bg-surface-300;
+  border: 2px solid $border-default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-muted;
+
+  &.active {
+    background: #ef4444;
+    border-color: #fca5a5;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+  }
+}
+
+.killChainLabel {
+  font-size: 10px;
+  color: $text-lighter;
+  font-weight: $font-weight-medium;
+  max-width: 90px;
+}
+
+.codeBox {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: $space-3;
+  background: $bg-surface-100;
+  border: 1px solid $border-default;
+  border-radius: $radius-sm;
+  color: $text-light;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.forensicBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-2 $space-3;
+  border-radius: $radius-sm;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  font-size: 11px;
+  color: #4ade80;
+}

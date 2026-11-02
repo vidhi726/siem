@@ -160,3 +160,19 @@ export const useTestRule = (
     },
   })
 }
+
+
+export const useRuleSigma = (
+  ruleId: string
+): UseQueryResult<{ rule_id: string; rule_name: string; sigma_yaml: string }, Error> => {
+  return useQuery({
+    queryKey: QUERY_KEYS.RULES.SIGMA(ruleId),
+    queryFn: async () => {
+      const response = await apiClient.get<{ rule_id: string; rule_name: string; sigma_yaml: string }>(
+        API_ENDPOINTS.RULES.SIGMA(ruleId)
+      )
+      return response.data
+    },
+    enabled: ruleId.length > 0,
+  })
+}

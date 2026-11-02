@@ -36,7 +36,9 @@ import {
   LuUsers,
 } from 'react-icons/lu'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import { useLogout } from '@/api/hooks'
+import { useAlertStream, useLogStream, useLogout } from '@/api/hooks'
+import { LiveIndicator } from './live-indicator'
+import { NotificationBell } from './notification-bell'
 import { ROUTES } from '@/config'
 import { useAuthStore, useUIStore } from '@/core/stores'
 import styles from './shell.module.scss'
@@ -78,6 +80,8 @@ function getPageTitle(pathname: string): string {
 }
 
 export function Shell(): React.ReactElement {
+  useAlertStream()
+  useLogStream()
   const location = useLocation()
   const { sidebarOpen, sidebarCollapsed, toggleSidebar, toggleSidebarCollapsed } =
     useUIStore()
@@ -195,6 +199,8 @@ export function Shell(): React.ReactElement {
           </div>
 
           <div className={styles.headerRight}>
+            <LiveIndicator />
+            <NotificationBell />
             <span className={styles.avatar}>{avatarLetter}</span>
           </div>
         </header>

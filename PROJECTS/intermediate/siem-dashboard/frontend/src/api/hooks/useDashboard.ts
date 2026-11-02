@@ -35,8 +35,8 @@ import { apiClient, QUERY_STRATEGIES } from '@/core/lib'
 export const dashboardQueries = {
   all: () => QUERY_KEYS.DASHBOARD.ALL,
   overview: () => QUERY_KEYS.DASHBOARD.OVERVIEW(),
-  timeline: (hours: number, bucket: number) =>
-    QUERY_KEYS.DASHBOARD.TIMELINE(hours, bucket),
+  timeline: (hours: number, bucket: number, offsetDays = 0) =>
+    QUERY_KEYS.DASHBOARD.TIMELINE(hours, bucket, offsetDays),
   severity: () => QUERY_KEYS.DASHBOARD.SEVERITY(),
   topSources: (limit: number) => QUERY_KEYS.DASHBOARD.TOP_SOURCES(limit),
 } as const
@@ -59,14 +59,21 @@ export const useDashboardOverview = (): UseQueryResult<
 
 export const useTimeline = (
   hours = 24,
-  bucketMinutes = 15
+  bucketMinutes = 15,
+  offsetDays = 0
 ): UseQueryResult<TimelineBucket[], Error> => {
   return useQuery({
-    queryKey: dashboardQueries.timeline(hours, bucketMinutes),
+    queryKey: dashboardQueries.timeline(hours, bucketMinutes, offsetDays),
     queryFn: async () => {
       const response = await apiClient.get<TimelineBucket[]>(
         API_ENDPOINTS.DASHBOARD.TIMELINE,
-        { params: { hours, bucket_minutes: bucketMinutes } }
+        {
+          params: {
+            hours,
+            bucket_minutes: bucketMinutes,
+            offset_days: offsetDays,
+          },
+        }
       )
       return response.data
     },

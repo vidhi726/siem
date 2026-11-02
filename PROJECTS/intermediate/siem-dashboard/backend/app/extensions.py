@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 ©AngelaMos | 2026
 extensions.py
@@ -19,14 +20,10 @@ Connects to:
   core/streaming.py - calls get_redis
 """
 
-from typing import TYPE_CHECKING
-
 import redis
 from flask import Flask
 from mongoengine import connect, disconnect
-
-if TYPE_CHECKING:
-    from redis import Redis
+from redis import Redis
 
 
 _redis_client: Redis[str] | None = None

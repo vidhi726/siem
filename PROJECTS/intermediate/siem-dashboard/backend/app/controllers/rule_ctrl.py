@@ -132,3 +132,16 @@ def test_rule(rule_id: str) -> dict[str, Any]:
         "alerts_would_fire": len(alerts_fired),
         "alerts": alerts_fired,
     }
+
+
+def get_sigma_rule(rule_id: str) -> dict[str, Any]:
+    """
+    Return the Sigma standard YAML representation for a rule
+    """
+    from app.core.sigma import convert_to_sigma_yaml
+    rule = CorrelationRule.get_by_id(rule_id)
+    return {
+        "rule_id": str(rule.id),
+        "rule_name": rule.name,
+        "sigma_yaml": convert_to_sigma_yaml(rule),
+    }

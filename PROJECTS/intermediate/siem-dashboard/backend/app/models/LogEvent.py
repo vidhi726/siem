@@ -193,16 +193,19 @@ class LogEvent(BaseDocument):
         cls,
         hours: int = settings.TIMELINE_DEFAULT_HOURS,
         bucket_minutes: int = settings.TIMELINE_BUCKET_MINUTES,
+        offset_days: int = 0,
     ) -> list[dict[str, Any]]:
         """
         Aggregate event counts into time buckets for charting
         """
-        cutoff = datetime.now(UTC) - timedelta(hours=hours)
+        now = datetime.now(UTC) - timedelta(days=offset_days)
+        cutoff = now - timedelta(hours=hours)
         pipeline = [
             {
                 "$match": {
                     "timestamp": {
-                        "$gte": cutoff
+                        "$gte": cutoff,
+                        "$lte": now,
                     }
                 }
             },
@@ -233,7 +236,28 @@ class LogEvent(BaseDocument):
                 }
             },
         ]
-        return list(cls.objects.aggregate(pipeline))  # type: ignore[no-untyped-call]
+        raw_results = list(cls.objects.aggregate(pipeline))  # type: ignore[no-untyped-call]
+
+        step_seconds = max(60, bucket_minutes * 60)
+        counts_by_ts: dict[int, int] = {}
+        for r in raw_results:
+            b = r.get("bucket")
+            if isinstance(b, datetime):
+                ts_int = int(b.timestamp() // step_seconds) * step_seconds
+                counts_by_ts[ts_int] = r.get("count", 0)
+
+        start_ts = int(cutoff.timestamp() // step_seconds) * step_seconds
+        end_ts = int(now.timestamp() // step_seconds) * step_seconds
+
+        continuous: list[dict[str, Any]] = []
+        for ts in range(start_ts, end_ts + step_seconds, step_seconds):
+            dt = datetime.fromtimestamp(ts, tz=UTC)
+            continuous.append({
+                "bucket": dt,
+                "count": counts_by_ts.get(ts, 0),
+            })
+
+        return continuous
 
     @classmethod
     def severity_breakdown(cls) -> list[dict[str, Any]]:
@@ -260,7 +284,10 @@ class LogEvent(BaseDocument):
         return list(cls.objects.aggregate(pipeline))  # type: ignore[no-untyped-call]
 
     @classmethod
-    def top_sources(cls, limit: int = settings.TOP_SOURCES_LIMIT) -> list[dict[str, Any]]:
+    def top_sources(
+        cls,
+        limit: int = settings.TOP_SOURCES_LIMIT,
+    ) -> list[dict[str, Any]]:
         """
         Return the most frequent source IPs
         """

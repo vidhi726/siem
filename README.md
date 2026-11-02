@@ -1,191 +1,338 @@
-<div align="center">
-  <img width="260" height="260" alt="Kali-dragon-icon svg" src="https://github.com/user-attachments/assets/d911b71f-6ad9-45b7-9513-237f83377023" alt="Kali Linux Icon"/>
-  <h1 align="center">Cybersecurity Projects 🐉</h1>
-  <p align="center">70 Cybersecurity Projects, Certification Roadmaps & Resources</p>
-</div>
+# 🛡️ Next-Gen Enterprise SIEM & SOAR Platform
+### Unified Threat Detection, Automated SOAR Containment, MITRE ATT&CK® Navigator, UEBA & Cryptographic Forensics
 
-<div align="center">
-  <img src="https://img.shields.io/github/stars/CarterPerez-dev/Cybersecurity-Projects" alt="stars"/>
-  <img src="https://img.shields.io/github/forks/CarterPerez-dev/Cybersecurity-Projects" alt="forks"/>
-  <img src="https://img.shields.io/github/issues/CarterPerez-dev/Cybersecurity-Projects" alt="issues"/>
-  <img src="https://img.shields.io/github/license/CarterPerez-dev/Cybersecurity-Projects" alt="license"/>
-  <br/>
-  <img src="https://img.shields.io/badge/Cybersecurity-70_Projects-darkblue" alt="projects"/>
-  <img src="https://img.shields.io/badge/Security-Learning_Resources-darkred" alt="resources"/>
-</div>
-
-<div align="center">
-  <a href="https://github.com/sponsors/CarterPerez-dev">
-    <img src="https://img.shields.io/static/v1?label=Contribute&message=%E2%9D%A4&logo=GitHub&color=darkgreen" alt="contribute"/>
-  </a>
-</div>
-
-  <br/>
-<p align="center"><a href="https://www.instagram.com/carterperez.dev/"><img src="./.github/assets/instagram-handle.svg" width="155" height="45" alt="@carterperez.dev on Instagram"/></a></p>
-
-<h2 align="center"><strong>View Complete Projects:</strong></h2>
-<div align="center">
-  <a href="https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS">
-    <img src="https://img.shields.io/badge/Full_Source_Code-43/70-blue?style=for-the-badge&logo=github" alt="Projects"/>
-  </a>
-</div>
-
-<p align="center"><sub><em>Currently building: DDoS Mitigation Tool</em></sub></p>
+[![GitHub license](https://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Redis](https://img.shields.io/badge/Redis-Streams%207.x-DC382D?logo=redis&logoColor=white)](https://redis.io/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Time--Series%208.x-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT%26CK%20v14-orange)](https://attack.mitre.org/)
+[![Sigma](https://img.shields.io/badge/Sigma-Standard%20Rules-blueviolet)](https://github.com/SigmaHQ/sigma)
+[![WCAG](https://img.shields.io/badge/WCAG-2.1%20AA%20Compliant-brightgreen)](https://www.w3.org/WAI/WCAG21/quickref/)
 
 ---
 
-<div align="center">
-  <a href="https://trendshift.io/repositories/20757?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-20757" target="_blank" rel="noopener noreferrer">
-    <img src="https://trendshift.io/api/badge/repositories/20757" alt="CarterPerez-dev/Cybersecurity-Projects | GitHub Trending #1 Repository of the Day" width="250" height="55"/>
-  </a>
-  <a href="https://trendshift.io/repositories/20757?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-20757" target="_blank" rel="noopener noreferrer">
-    <img src="https://trendshift.io/api/badge/trendshift/repositories/20757/daily?language=Go" alt="CarterPerez-dev/Cybersecurity-Projects | Trendshift Go #1 Repository of the Day" width="250" height="55"/>
-  </a>
-</div>
+## 📌 Executive Summary
 
-## Quick Navigation
+Modern Security Operations Centers (SOCs) are burdened by **alert fatigue**, **fragmented point solutions**, **high ingestion costs**, and **excessive Mean Time to Detect (MTTD) and Mean Time to Respond (MTTR)**. Legacy SIEM solutions act merely as passive log repositories, requiring external orchestration tools and costly manual analyst interventions.
 
-### [Projects](#projects)
-Hands-on cybersecurity projects with full source code, organized in four tiers — **Foundations** (pre-beginner, first-time programmers), **Beginner**, **Intermediate**, and **Advanced**.
-
-### [Certification Roadmaps](./ROADMAPS/README.md)
-10 structured career paths with certification guides for SOC Analyst, Pentester, Security Engineer, and more.
-
-### [Learning Resources](./RESOURCES/README.md)
-Tools, courses, certifications, communities, and frameworks for cybersecurity professionals.
+This **Next-Generation Security Information and Event Management (SIEM) & Security Orchestration, Automation, and Response (SOAR)** platform solves these challenges in a unified, sub-second latency architecture:
+- **Sub-Second Log Processing**: Ingests, normalizes, and correlates high-throughput event telemetry across Syslog, Windows Event Logs, and Network firewalls via Redis Streams.
+- **Active Defense (SOAR)**: Bridges passive detection to active containment with 1-click & automated firewall IP drops, host network quarantine, and IAM credential revocations.
+- **Full MITRE ATT&CK® Enterprise Navigator**: Real-time matrix heatmaps mapping 14 tactical kill chain phases and adversary techniques.
+- **Multi-Source Threat Intelligence (TI)**: Automated on-demand IOC enrichment against AbuseIPDB, VirusTotal, AlienVault OTX, and Shodan.
+- **User & Entity Behavior Analytics (UEBA)**: Baselines normal operational activity to flag statistical anomalies and multi-stage attack chains.
+- **Sigma Rule Standard**: Native interoperability with Sigma detection rules, enabling immediate import/export and YAML inspection.
+- **Court-Admissible Forensics**: Cryptographic HMAC-SHA256 non-repudiation sealing and 1-click forensic incident reporting.
+- **Tactical SOC Interface**: Audio alert notification chime with Web Audio visualizer pill, 30-second automated re-escalation, local time-adaptive historical graph controls, and WCAG AA high-contrast dark theme.
 
 ---
 
-# Projects
+## 🏛️ System Architecture
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Foundations-5DEFD0?style=for-the-badge&logo=bookstack&logoColor=black&labelColor=5DEFD0" alt="Foundations"/>
-  <img src="https://img.shields.io/badge/Beginner-2EA44F?style=for-the-badge&logo=leaflet&logoColor=white" alt="Beginner"/>
-  <img src="https://img.shields.io/badge/Intermediate-D4A017?style=for-the-badge&logo=target&logoColor=white" alt="Intermediate"/>
-  <img src="https://img.shields.io/badge/Advanced-C73E3A?style=for-the-badge&logo=shield&logoColor=white" alt="Advanced"/>
-</div>
+The platform follows an asynchronous, event-driven microservices architecture partitioned into ingestion, correlation, persistence, orchestration, and visualization tiers:
 
----
-
-> [!TIP]
-> **Want to be walked through building these instead of reading finished source?** [CertGames](https://certgames.com) has guided project courses that build real security tools from scratch, step by step, with the concepts explained as you go. Same projects, less getting stuck. FREE
-
-## Foundations Projects
-
-> [!NOTE]
-> **Start here if this is your first time coding.** The Foundations tier is *pre-beginner* — built for someone who has never written Python, has barely used a terminal, and is new to cybersecurity. Source files are heavily commented as a teaching aid, and every `learn/` folder explains concepts from zero. Once you're comfortable here, the Beginner projects assume you already know the language and move faster.
->
-> **What makes Foundations different:**
-> - **Single-file projects** — the entire tool lives in one readable Python file. No file-hopping.
-> - **Heavy teaching comments** — every line that introduces a new concept is annotated inline.
-> - **Numpy-style docstrings on every function** — what it does, why it exists, every parameter.
-> - **Extra-deep `learn/` folders** — Python features and security concepts both explained from zero.
-> - **Senior-level code, beginner-level explanations** — the code itself is still production-quality.
-
-| Project | Info | What You'll Learn |
-|---------|------|-------------------|
-| **[Hash Identifier](./PROJECTS/foundations/hash-identifier)**<br>Identify hash types by prefix, length, and charset | ![Step 1/3](https://img.shields.io/badge/Step-1%2F3_easiest-2EA44F?style=flat&logo=bookstack&logoColor=white) ![2-4h](https://img.shields.io/badge/⏱️_2--4h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Foundations](https://img.shields.io/badge/●_Foundations-00C9A7) | Hash families (MD5, SHA, bcrypt, Argon2) • PHC string format • Pattern matching • Pure-function design<br>[Source Code](./PROJECTS/foundations/hash-identifier) \| [Docs](./PROJECTS/foundations/hash-identifier/learn) |
-| **[HTTP Headers Scanner](./PROJECTS/foundations/http-headers-scanner)**<br>Audit a URL's response headers for missing or weak security controls | ![Step 2/3](https://img.shields.io/badge/Step-2%2F3_stepping_up-D4A017?style=flat&logo=bookstack&logoColor=white) ![3-5h](https://img.shields.io/badge/⏱️_3--5h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Foundations](https://img.shields.io/badge/●_Foundations-00C9A7) | HTTP fundamentals • Security headers (CSP, HSTS, X-Frame-Options) • httpx requests • Scored audits<br>[Source Code](./PROJECTS/foundations/http-headers-scanner) \| [Docs](./PROJECTS/foundations/http-headers-scanner/learn) |
-| **[Password Manager](./PROJECTS/foundations/password-manager)**<br>Encrypted local vault with master password unlock | ![Step 3/3](https://img.shields.io/badge/Step-3%2F3_hardest-C73E3A?style=flat&logo=bookstack&logoColor=white) ![6-8h](https://img.shields.io/badge/⏱️_6--8h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Foundations](https://img.shields.io/badge/●_Foundations-00C9A7) | Argon2id key derivation • AES-GCM authenticated encryption • Secure on-disk vaults • Master-password workflows<br>[Source Code](./PROJECTS/foundations/password-manager) \| [Docs](./PROJECTS/foundations/password-manager/learn) |
-
----
-
-## Beginner Projects
-
-| Project | Info | What You'll Learn |
-|---------|------|-------------------|
-| **[Simple Port Scanner](./PROJECTS/beginner/simple-port-scanner)**<br>Async TCP port scanner in C++ [@deniskhud](https://github.com/deniskhud) | ![2-4h](https://img.shields.io/badge/⏱️_4--5h-blue) ![C++](https://img.shields.io/badge/C%2B%2B-00599C?logo=cplusplus) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | TCP socket programming • Async I/O patterns • Service detection<br>[Source Code](./PROJECTS/beginner/simple-port-scanner) \| [Docs](./PROJECTS/beginner/simple-port-scanner/learn) |
-| **[Keylogger](./PROJECTS/beginner/keylogger)**<br>Capture keyboard events with timestamps | ![1-2h](https://img.shields.io/badge/⏱️_4--5h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Event handling • File I/O • Ethical considerations<br>[Source Code](./PROJECTS/beginner/keylogger) \| [Docs](./PROJECTS/beginner/keylogger/learn) |
-| **[Caesar Cipher](./PROJECTS/beginner/caesar-cipher)**<br>CLI encryption/decryption tool | ![1-2h](https://img.shields.io/badge/⏱️_4--5h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Classical cryptography • Brute force attacks • CLI design<br>[Source Code](./PROJECTS/beginner/caesar-cipher) \| [Docs](./PROJECTS/beginner/caesar-cipher/learn) |
-| **[DNS Lookup CLI Tool](./PROJECTS/beginner/dns-lookup)**<br>Query DNS records with WHOIS | ![2-3h](https://img.shields.io/badge/⏱️_6--7h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | DNS protocols • WHOIS queries • Reverse DNS lookup<br>[Source Code](./PROJECTS/beginner/dns-lookup) \| [Docs](./PROJECTS/beginner/dns-lookup/learn) |
-| **[Simple Vulnerability Scanner](./PROJECTS/beginner/simple-vulnerability-scanner)**<br>Check software against CVE databases | ![3-4h](https://img.shields.io/badge/⏱️_12--14h-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | CVE databases • Dependency scanning • Vulnerability assessment<br>[Source Code](./PROJECTS/beginner/simple-vulnerability-scanner) \| [Docs](./PROJECTS/beginner/simple-vulnerability-scanner/learn) |
-| **[Network Traffic Analyzer](./PROJECTS/beginner/network-traffic-analyzer)**<br>Capture and analyze packets | ![3-5h](https://img.shields.io/badge/⏱️_10--12h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![C++](https://img.shields.io/badge/C%2B%2B-00599C?logo=cplusplus&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Packet capture • Protocol analysis • Traffic visualization<br>[Source (C++)](./PROJECTS/beginner/network-traffic-analyzer/cpp) \| [Docs (C++)](./PROJECTS/beginner/network-traffic-analyzer/cpp/learn) \| [Source (Python)](./PROJECTS/beginner/network-traffic-analyzer/python) \| [Docs (Python)](./PROJECTS/beginner/network-traffic-analyzer/python/learn) |
-| **[Hash Cracker](./PROJECTS/beginner/hash-cracker)**<br>Dictionary and brute-force cracking | ![3-4h](https://img.shields.io/badge/⏱️_5--6h-blue) ![C++](https://img.shields.io/badge/C%2B%2B-00599C?logo=cplusplus&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Hash algorithms • Dictionary attacks • Password security<br>[Source Code](./PROJECTS/beginner/hash-cracker) \| [Docs](./PROJECTS/beginner/hash-cracker/learn) |
-| **[Steganography Multi-Tool](./SYNOPSES/beginner/Steganography.Multi.Tool.md)**<br>Hide data in images, audio, QR, PDFs, text | ![8-10h](https://img.shields.io/badge/⏱️_8--10h-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Multi-format steganography • Encrypted AEAD envelope • Zero-width Unicode • Audio LSB • QR Reed-Solomon injection<br>[Source Code](./PROJECTS/beginner/steganography-multi-tool) \| [Docs](./PROJECTS/beginner/steganography-multi-tool/learn) |
-| **[Deserialization Gadget Lab](./PROJECTS/beginner/deserialization-gadget-lab)**<br>Read untrusted Marshal and YAML without ever reviving it, then break it | ![12-16h](https://img.shields.io/badge/⏱️_12--16h-blue) ![Ruby](https://img.shields.io/badge/Ruby-CC342D?logo=ruby&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Gadget chains • Marshal binary format • Gated vs ungated dispatch • TracePoint veto • CVE-2026-41316<br>[Source Code](./PROJECTS/beginner/deserialization-gadget-lab) \| [Docs](./PROJECTS/beginner/deserialization-gadget-lab/learn)<br>[![gem: marshalsea](https://img.shields.io/badge/gem-marshalsea-E9573F?style=flat&logo=rubygems&logoColor=white)](https://rubygems.org/gems/marshalsea) |
-| **[Canary Token Generator](./PROJECTS/beginner/canary-token-generator)**<br>Self-hosted honeytokens that alert on access | ![2-3h](https://img.shields.io/badge/⏱️_8--10h-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Deception defense • Honeytokens • MySQL wire protocol • PDF/DOCX patching • Webhook + Telegram alerting<br>[Source Code](./PROJECTS/beginner/canary-token-generator) \| [Docs](./PROJECTS/beginner/canary-token-generator/learn)<br>[![iglowinthedark.com](https://img.shields.io/badge/iglowinthedark.com-8B5CF6?style=flat&logo=googlechrome&logoColor=white)](https://iglowinthedark.com/) |
-| **[Phishing Domain Generator & Quishing Scanner](./SYNOPSES/beginner/Phishing.Domain.Generator.And.Quishing.Scanner.md)**<br>Typosquat generation + QR phishing detection | ![2-3h](https://img.shields.io/badge/⏱️_6--8h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Homoglyph attacks • Typosquatting • QR code analysis • Domain intelligence<br>[Learn More](./SYNOPSES/beginner/Phishing.Domain.Generator.And.Quishing.Scanner.md) |
-| **[SSH Brute Force Detector](./SYNOPSES/beginner/SSH.Brute.Force.Detector.md)**<br>Monitor and block SSH attacks | ![2-4h](https://img.shields.io/badge/⏱️_2--4h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Log parsing • Attack detection • Firewall automation<br>[Learn More](./SYNOPSES/beginner/SSH.Brute.Force.Detector.md) |
-| **[Simple C2 Beacon](./PROJECTS/beginner/c2-beacon)**<br>Command and Control beacon/server | ![3-5h](https://img.shields.io/badge/⏱️_10--12h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | C2 architecture • MITRE ATT&CK • WebSocket protocol • XOR encoding<br>[Source Code](./PROJECTS/beginner/c2-beacon) \| [Docs](./PROJECTS/beginner/c2-beacon/learn) |
-| **[Base64 Encoder/Decoder](./SYNOPSES/beginner/Base64.Encoder.Decoder.md)**<br>Multi-format encoding tool | ![1h](https://img.shields.io/badge/⏱️_2h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Base64/32 encoding • URL encoding • Auto-detection<br>[Source Code](./PROJECTS/beginner/base64-tool) \| [Docs](./PROJECTS/beginner/base64-tool/learn) |
-| **[Linux CIS Hardening Auditor](./PROJECTS/beginner/linux-cis-hardening-auditor)**<br>CIS benchmark compliance checker | ![3-4h](https://img.shields.io/badge/⏱️_6--8h-blue) ![Bash](https://img.shields.io/badge/Bash-4EAA25?logo=gnubash&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | CIS benchmarks • System hardening • Compliance scoring • Shell scripting<br>[Source Code](./PROJECTS/beginner/linux-cis-hardening-auditor) \| [Docs](./PROJECTS/beginner/linux-cis-hardening-auditor/learn) |
-| **[Systemd Persistence Scanner](./PROJECTS/beginner/systemd-persistence-scanner)**<br>Hunt Linux persistence mechanisms | ![2-3h](https://img.shields.io/badge/⏱️_6--8h-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Persistence techniques • Systemd internals • Cron analysis • Threat hunting<br>[Source Code](./PROJECTS/beginner/systemd-persistence-scanner) \| [Docs](./PROJECTS/beginner/systemd-persistence-scanner/learn) |
-| **[Linux eBPF Security Tracer](./PROJECTS/beginner/linux-ebpf-security-tracer)**<br>Real-time syscall tracing with eBPF | ![2-3h](https://img.shields.io/badge/⏱️_10--12h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![C](https://img.shields.io/badge/C-A8B9CC?logo=c&logoColor=black) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | eBPF programs • Syscall tracing • BCC framework • Security observability<br>[Source Code](./PROJECTS/beginner/linux-ebpf-security-tracer) \| [Docs](./PROJECTS/beginner/linux-ebpf-security-tracer/learn) |
-| **[Trojan Application Builder](./SYNOPSES/beginner/Trojan.Application.Builder.md)**<br>Educational malware lifecycle demo | ![2-3h](https://img.shields.io/badge/⏱️_8--10h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Trojan anatomy • Data exfiltration • File encryption • Attack lifecycle<br>[Learn More](./SYNOPSES/beginner/Trojan.Application.Builder.md) |
-| **[DNS Sinkhole](./SYNOPSES/beginner/DNS.Sinkhole.md)**<br>Pi-hole-style malware domain blocker | ![3-4h](https://img.shields.io/badge/⏱️_10--12h-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | DNS protocol • Blocklist management • Query logging • Network defense<br>[Learn More](./SYNOPSES/beginner/DNS.Sinkhole.md) |
-| **[Firewall Rule Engine](./PROJECTS/beginner/firewall-rule-engine)**<br>Parse and validate iptables/nftables rules | ![2-3h](https://img.shields.io/badge/⏱️_6--8h-blue) ![V](https://img.shields.io/badge/V-5D87BF?logo=v&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Firewall internals • Rule parsing • iptables/nftables • V language<br>[Source Code](./PROJECTS/beginner/firewall-rule-engine) \| [Docs](./PROJECTS/beginner/firewall-rule-engine/learn) |
-| **[LLM Prompt Injection Firewall](./PROJECTS/beginner/prompt-injection-firewall)**<br>Sandbox the effects, not the prompt: fence untrusted text, authorize the tool calls, match the secret on the way out | ![14-18h](https://img.shields.io/badge/⏱️_14--18h-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Beginner-green) | Provenance fencing • Taint propagation • Unicode tag-block smuggling • Encoding closure • OWASP LLM01:2025<br>[Source Code](./PROJECTS/beginner/prompt-injection-firewall) \| [Docs](./PROJECTS/beginner/prompt-injection-firewall/learn)<br>[![Website Demo](https://img.shields.io/badge/notsandboxed%2Ecom-008000?style=flat&logo=googlechrome&logoColor=white)](https://notsandboxed.com) |
-
-## Intermediate Projects
-
-| Project | Info | What You'll Learn |
-|---------|------|-------------------|
-| **[Security News Scraper](./SYNOPSES/beginner/Security.News.Scraper.md)**<br>Aggregate cybersecurity news | ![3-4h](https://img.shields.io/badge/⏱️_14--18h-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Beginner](https://img.shields.io/badge/●_Intermediate-yellow) | Web scraping • CVE parsing • Database storage<br>[Source Code](./PROJECTS/intermediate/security-news-scraper) \| [Docs](./PROJECTS/intermediate/security-news-scraper/learn) |
-| **[Payload Obfuscation Engine](./SYNOPSES/intermediate/Payload.Obfuscation.Engine.md)**<br>Multi-layer payload obfuscation toolkit | ![2-4d](https://img.shields.io/badge/⏱️_3--5d-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Obfuscation techniques • Polymorphism • AV evasion • Signature detection<br>[Learn More](./SYNOPSES/intermediate/Payload.Obfuscation.Engine.md) |
-| **[SIEM Dashboard](./SYNOPSES/intermediate/SIEM.Dashboard.md)**<br>Log aggregation with correlation | ![3-5d](https://img.shields.io/badge/⏱️_3--5d-blue) ![Flask](https://img.shields.io/badge/Flask-000000?logo=flask) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | SIEM concepts • Log correlation • Full-stack development<br>[Source Code](./PROJECTS/intermediate/siem-dashboard) \| [Docs](./PROJECTS/intermediate/siem-dashboard/learn)<br>[![siem.carterperez-dev.com](https://img.shields.io/badge/siem.carterperez--dev.com-3FB950?style=flat&logo=googlechrome&logoColor=white)](https://siem.carterperez-dev.com/) |
-| **[Token Abuse Playground](./SYNOPSES/intermediate/Token.Abuse.Playground.md)**<br>15+ token vulnerabilities to exploit and fix | ![3-5d](https://img.shields.io/badge/⏱️_3--5d-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | JWT exploitation • OAuth attacks • Session security • Token forensics<br>[Learn More](./SYNOPSES/intermediate/Token.Abuse.Playground.md) |
-| **[Supply Chain Attack Simulator](./SYNOPSES/intermediate/Supply.Chain.Attack.Simulator.md)**<br>Fake PyPI package dependency confusion demo | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Supply chain attacks • Dependency confusion • Package security • PyPI internals<br>[Learn More](./SYNOPSES/intermediate/Supply.Chain.Attack.Simulator.md) |
-| **[DDoS Mitigation Tool](./SYNOPSES/intermediate/DDoS.Mitigation.Tool.md)**<br>Detect traffic spikes | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | DDoS detection • Rate limiting • Anomaly detection<br>[Learn More](./SYNOPSES/intermediate/DDoS.Mitigation.Tool.md) |
-| **[Secrets Scanner](./PROJECTS/intermediate/secrets-scanner)**<br>Scan codebases and git history for leaked secrets | ![1-2d](https://img.shields.io/badge/⏱️_1--2d-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Secret detection • Shannon entropy • HIBP k-anonymity • SARIF output<br>[Source Code](./PROJECTS/intermediate/secrets-scanner) \| [Docs](./PROJECTS/intermediate/secrets-scanner/learn) |
-| **[API Security Scanner](./PROJECTS/intermediate/api-security-scanner)**<br>Enterprise API vulnerability scanner | ![3-5d](https://img.shields.io/badge/⏱️_3--5d-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | OWASP API Top 10 • ML fuzzing • GraphQL/SOAP testing<br>[Source Code](./PROJECTS/intermediate/api-security-scanner) \| [Docs](./PROJECTS/intermediate/api-security-scanner/learn) |
-| **[Wireless Deauth Detector](./SYNOPSES/intermediate/Wireless.Deauth.Detector.md)**<br>Monitor WiFi deauth attacks | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Wireless security • Packet sniffing • Attack detection<br>[Learn More](./SYNOPSES/intermediate/Wireless.Deauth.Detector.md) |
-| **[Credential Enumeration](./PROJECTS/intermediate/credential-enumeration)**<br>Post-exploitation credential collection | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Nim](https://img.shields.io/badge/Nim-FFE953?logo=nim&logoColor=black) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Credential extraction • Browser forensics • Red team tooling • Nim language<br>[Source Code](./PROJECTS/intermediate/credential-enumeration) \| [Docs](./PROJECTS/intermediate/credential-enumeration/learn) |
-| **[Binary Analysis Tool](./PROJECTS/intermediate/binary-analysis-tool)**<br>Disassemble and analyze executables | ![3-5d](https://img.shields.io/badge/⏱️_3--5d-blue) ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Binary analysis • String extraction • Malware detection<br>[Source Code](./PROJECTS/intermediate/binary-analysis-tool) \| [Docs](./PROJECTS/intermediate/binary-analysis-tool/learn)<br>[![https://elitenetwork4life.com/](https://img.shields.io/badge/elitenetwork4life.com-E8730C?style=flat&logo=googlechrome&logoColor=white)](https://elitenetwork4life.com/) |
-| **[Chaos Engineering Security Tool](./PROJECTS/intermediate/chaos-engineering-tool)**<br>Inject security failures and measure control behavior | ![3-5d](https://img.shields.io/badge/⏱️_3--5d-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Security chaos engineering • Authentication • TLS and DNS • Recovery<br>[Source Code](./PROJECTS/intermediate/chaos-engineering-tool) \| [Docs](./PROJECTS/intermediate/chaos-engineering-tool/learn) |
-| **[Credential Rotation Enforcer](./SYNOPSES/intermediate/Credential.Rotation.Enforcer.md)**<br>Track and enforce credential rotation policies | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Crystal](https://img.shields.io/badge/Crystal-black?logo=crystal&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Credential hygiene • Secret rotation • Compliance dashboards • API integration<br>[Source Code](./PROJECTS/intermediate/credential-rotation-enforcer) \| [Docs](./PROJECTS/intermediate/credential-rotation-enforcer/learn) |
-| **[Race Condition Exploiter](./SYNOPSES/intermediate/Race.Condition.Exploiter.md)**<br>TOCTOU race condition attack & defense lab | ![3-5d](https://img.shields.io/badge/⏱️_3--5d-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | TOCTOU attacks • Double-spend bugs • Concurrent exploitation • Race visualization<br>[Learn More](./SYNOPSES/intermediate/Race.Condition.Exploiter.md) |
-| **[JA3/JA4 TLS Fingerprinting Tool](./SYNOPSES/intermediate/JA3.JA4.TLS.Fingerprinting.Tool.md)**<br>Fingerprint TLS clients by handshake | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | TLS handshake analysis • JA3/JA4 hashing • Bot detection • Malware C2 identification<br>[Source Code](./PROJECTS/intermediate/ja3-ja4-tls-fingerprinting) \| [Docs](./PROJECTS/intermediate/ja3-ja4-tls-fingerprinting/learn)<br>[![mkultraalumni.com](https://img.shields.io/badge/mkultraalumni.com-E8730C?style=flat&logo=googlechrome&logoColor=white)](https://mkultraalumni.com/) |
-| **[Mobile App Security Analyzer](./SYNOPSES/intermediate/Mobile.App.Security.Analyzer.md)**<br>Decompile and analyze mobile apps | ![3-5d](https://img.shields.io/badge/⏱️_3--5d-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | APK/IPA analysis • Reverse engineering • OWASP Mobile<br>[Learn More](./SYNOPSES/intermediate/Mobile.App.Security.Analyzer.md) |
-| **[DLP Scanner](./PROJECTS/intermediate/dlp-scanner)**<br>Data Loss Prevention for files, DBs, and traffic | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | PII detection • GDPR/HIPAA compliance • Pattern matching • Data classification<br>[Source Code](./PROJECTS/intermediate/dlp-scanner) \| [Docs](./PROJECTS/intermediate/dlp-scanner/learn) |
-| **[Lua/Nginx Edge Backend](./SYNOPSES/intermediate/Lua.Nginx.Edge.Backend.md)**<br>Full CRUD backend via Lua in Nginx | ![3-5d](https://img.shields.io/badge/⏱️_3--5d-blue) ![Lua](https://img.shields.io/badge/Lua-2C2D72?logo=lua&logoColor=white) ![Nginx](https://img.shields.io/badge/Nginx-009639?logo=nginx&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Edge computing • OpenResty • Lua scripting • WAF • JWT at the edge<br>[Learn More](./SYNOPSES/intermediate/Lua.Nginx.Edge.Backend.md) |
-| **[Privesc Playground](./SYNOPSES/intermediate/Privesc.Playground.md)**<br>20+ privilege escalation paths to exploit | ![3-5d](https://img.shields.io/badge/⏱️_3--5d-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | SUID exploitation • Sudo abuse • Cron hijacking • GTFOBins • Capability abuse<br>[Learn More](./SYNOPSES/intermediate/Privesc.Playground.md) |
-| **[SBOM Generator & Vulnerability Matcher](./PROJECTS/intermediate/sbom-generator-vulnerability-matcher)**<br>Software Bill of Materials with CVE matching | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | SPDX/CycloneDX formats • Dependency analysis • CVE databases • EO 14028 compliance<br>[Source Code](./PROJECTS/intermediate/sbom-generator-vulnerability-matcher) \| [Docs](./PROJECTS/intermediate/sbom-generator-vulnerability-matcher/learn) |
-| **[Subdomain Takeover Scanner](./SYNOPSES/intermediate/Subdomain.Takeover.Scanner.md)**<br>Detect dangling DNS records | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | DNS enumeration • CNAME analysis • Cloud resource claiming • Bug bounty<br>[Learn More](./SYNOPSES/intermediate/Subdomain.Takeover.Scanner.md) |
-| **[GraphQL Security Tester](./SYNOPSES/intermediate/GraphQL.Security.Tester.md)**<br>Automated GraphQL vulnerability testing | ![2-4d](https://img.shields.io/badge/⏱️_2--4d-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | Introspection attacks • Query depth DoS • Authorization bypass • Batching abuse<br>[Learn More](./SYNOPSES/intermediate/GraphQL.Security.Tester.md) |
-| **[Docker Security Audit](./PROJECTS/intermediate/docker-security-audit)**<br>CIS Docker Benchmark scanner | ![1-2d](https://img.shields.io/badge/⏱️_1--2d-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![Intermediate](https://img.shields.io/badge/●_Intermediate-yellow) | CIS benchmarks • Container security • Multiple output formats<br>[Source Code](./PROJECTS/intermediate/docker-security-audit) \| [Docs](./PROJECTS/intermediate/docker-security-audit/learn) |
-
-## Advanced Projects
-
-| Project | Info | What You'll Learn |
-|---------|------|-------------------|
-| **[API Rate Limiter](./PROJECTS/advanced/api-rate-limiter)**<br>Distributed rate limiting middleware | ![1w](https://img.shields.io/badge/⏱️_1w-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Token bucket algorithm • Distributed systems • Redis backend<br>[Source Code](./PROJECTS/advanced/api-rate-limiter) \| [Docs](./PROJECTS/advanced/api-rate-limiter/learn) |
-| **[Encrypted Chat Application](./PROJECTS/advanced/encrypted-p2p-chat)**<br>Real-time E2EE messaging | ![1-2w](https://img.shields.io/badge/⏱️_1--2w-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi) ![SolidJS](https://img.shields.io/badge/SolidJS-2C4F7C?logo=solid) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Signal Protocol • Double Ratchet • WebAuthn • WebSockets<br>[Source Code](./PROJECTS/advanced/encrypted-p2p-chat) \| [Docs](./PROJECTS/advanced/encrypted-p2p-chat/learn) |
-| **[Exploit Development Framework](./SYNOPSES/advanced/Exploit.Development.Framework.md)**<br>Modular exploitation framework | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![C++](https://img.shields.io/badge/C%2B%2B-00599C?logo=cplusplus&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Exploit development • Payload generation • Plugin architecture<br>[Learn More](./SYNOPSES/advanced/Exploit.Development.Framework.md) |
-| **[AI Threat Detection](./PROJECTS/advanced/ai-threat-detection)**<br>ML-powered nginx threat detection | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | ML ensemble (AE + RF + IF) • ONNX inference • Real-time detection<br>[Source Code](./PROJECTS/advanced/ai-threat-detection) \| [Docs](./PROJECTS/advanced/ai-threat-detection/learn) |
-| **[Zingela Stateless Scanner](./PROJECTS/advanced/zig-stateless-scanner)**<br>Line-rate stateless mass TCP/UDP port scanner | ![1-2w](https://img.shields.io/badge/⏱️_1--2w-blue) ![Zig](https://img.shields.io/badge/Zig-F7A41D?logo=zig&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Stateless SYN scanning • SipHash cookies • Cyclic-group permutation • AF_PACKET / AF_XDP<br>[Source Code](./PROJECTS/advanced/zig-stateless-scanner) \| [Docs](./PROJECTS/advanced/zig-stateless-scanner/learn) |
-| **[Bug Bounty Platform](./PROJECTS/advanced/bug-bounty-platform)**<br>Full vulnerability disclosure platform | ![2-3w](https://img.shields.io/badge/⏱️_2--3w-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Full-stack development • CVSS scoring • Workflow automation<br>[Source Code](./PROJECTS/advanced/bug-bounty-platform) \| [Docs](./PROJECTS/advanced/bug-bounty-platform/learn)<br>[![bugbounty.carterperez-dev.com](https://img.shields.io/badge/bugbounty.carterperez--dev.com-3FB950?style=flat&logo=googlechrome&logoColor=white)](https://bugbounty.carterperez-dev.com/) |
-| **[Cloud Security Compliance Dashboard](./SYNOPSES/advanced/Cloud.Security.Compliance.Dashboard.md)**<br>Multi-cloud compliance with CIS, SOC2, HIPAA | ![2-3w](https://img.shields.io/badge/⏱️_2--3w-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![AWS](https://img.shields.io/badge/AWS-232F3E?logo=amazonaws) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | CIS benchmarks • SOC2/HIPAA compliance • Cost-security optimization • Drift detection<br>[Learn More](./SYNOPSES/advanced/Cloud.Security.Compliance.Dashboard.md) |
-| **[Malware Analysis Platform](./SYNOPSES/advanced/Malware.Analysis.Platform.md)**<br>Automated sandbox analysis | ![2-3w](https://img.shields.io/badge/⏱️_2--3w-blue) ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Malware analysis • Sandboxing • YARA rules • IOC extraction<br>[Learn More](./SYNOPSES/advanced/Malware.Analysis.Platform.md) |
-| **[Quantum Resistant Encryption](./SYNOPSES/advanced/Quantum.Resistant.Encryption.md)**<br>Post-quantum cryptography | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Post-quantum algorithms • Hybrid encryption • Kyber/Dilithium<br>[Learn More](./SYNOPSES/advanced/Quantum.Resistant.Encryption.md) |
-| **[Zero Day Vulnerability Scanner](./SYNOPSES/advanced/Zero.Day.Vulnerability.Scanner.md)**<br>Coverage-guided fuzzing | ![2-3w](https://img.shields.io/badge/⏱️_2--3w-blue) ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) ![C](https://img.shields.io/badge/C-A8B9CC?logo=c&logoColor=black) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Keyless harness synthesis • Auto-build under ASAN • AFL++ campaigns • Stack-hash dedup • Magma-validated triage • Disclosure bundles<br>[Source Code](./PROJECTS/advanced/zero-day-vulnerability-scanner) \| [Docs](./PROJECTS/advanced/zero-day-vulnerability-scanner/learn) |
-| **[Distributed Password Cracker](./SYNOPSES/advanced/Distributed.Password.Cracker.md)**<br>GPU-accelerated cracking | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![C++](https://img.shields.io/badge/C%2B%2B-00599C?logo=cplusplus&logoColor=white) ![CUDA](https://img.shields.io/badge/CUDA-76B900?logo=nvidia) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Distributed systems • GPU computing • Hash cracking<br>[Learn More](./SYNOPSES/advanced/Distributed.Password.Cracker.md) |
-| **[Kernel Rootkit Detection](./SYNOPSES/advanced/Kernel.Rootkit.Detection.md)**<br>Detect kernel-level rootkits | ![2-3w](https://img.shields.io/badge/⏱️_2--3w-blue) ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Kernel internals • Memory forensics • Rootkit detection<br>[Learn More](./SYNOPSES/advanced/Kernel.Rootkit.Detection.md) |
-| **[Blockchain Smart Contract Auditor](./SYNOPSES/advanced/Blockchain.Smart.Contract.Auditor.md)**<br>Solidity vulnerability analysis | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Solidity](https://img.shields.io/badge/Solidity-363636?logo=solidity) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Smart contracts • Static analysis • Solidity security<br>[Learn More](./SYNOPSES/advanced/Blockchain.Smart.Contract.Auditor.md) |
-| **[Adversarial ML Attacker](./SYNOPSES/advanced/Adversarial.ML.Attacker.md)**<br>Generate adversarial examples | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Adversarial ML • FGSM/DeepFool • Model robustness<br>[Learn More](./SYNOPSES/advanced/Adversarial.ML.Attacker.md) |
-| **[Reverse-Engineering](./PROJECTS/advanced/rveng)**<br>Reverse-engineering learning platform. | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![C](https://img.shields.io/badge/C-A8B9CC?logo=c&logoColor=black) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Reverse Engineering • Disassembly • Dynamic & Static Analysis<br>[Source Code](./PROJECTS/advanced/rveng) \| [Docs](./PROJECTS/advanced/rveng/learn)
-| **[Hardware Security Module Emulator](./PROJECTS/advanced/hsm-emulator)**<br>Software HSM that compiles to a real PKCS#11 `.so` | ![2-3w](https://img.shields.io/badge/⏱️_2--3w-blue) ![Zig](https://img.shields.io/badge/Zig-F7A41D?logo=zig&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | PKCS#11/Cryptoki C ABI (machine-checked vs OASIS headers) • AES-GCM/CBC • RSA/ECDSA/ECDH • Argon2id + encrypted-at-rest • driven by `pkcs11-tool`<br>[Source Code](./PROJECTS/advanced/hsm-emulator) \| [Docs](./PROJECTS/advanced/hsm-emulator/learn) |
-| **[Network Covert Channel](./SYNOPSES/advanced/Network.Covert.Channel.md)**<br>Data exfiltration techniques | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Covert channels • Data exfiltration • Steganography<br>[Learn More](./SYNOPSES/advanced/Network.Covert.Channel.md) |
-| **[Automated Penetration Testing](./SYNOPSES/advanced/Automated.Penetration.Testing.md)**<br>Full pentest automation | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Pentest automation • Recon to exploitation • Report generation<br>[Learn More](./SYNOPSES/advanced/Automated.Penetration.Testing.md) |
-| **[Haskell Reverse Proxy](./PROJECTS/advanced/haskell-reverse-proxy)**<br>Functional reverse proxy with security middleware | ![2-3w](https://img.shields.io/badge/⏱️_2--3w-blue) ![Haskell](https://img.shields.io/badge/Haskell-5D4F85?logo=haskell&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Functional programming • Reverse proxy design • Security middleware • Haskell<br>[Source Code](./PROJECTS/advanced/haskell-reverse-proxy) |
-| **["Monitor the Situation" Dashboard](./PROJECTS/advanced/monitor-the-situation-dashboard)**<br>Real-time cyber threat situational awareness | ![3-4w](https://img.shields.io/badge/⏱️_3--4w-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Threat intel feeds • EPSS/KEV/CVE velocity • BGP hijacks • WebSocket fan-out • 3D globe SOC view<br>[Source Code](./PROJECTS/advanced/monitor-the-situation-dashboard) \| [Docs](./PROJECTS/advanced/monitor-the-situation-dashboard/learn)<br>[![iminthewalls.com](https://img.shields.io/badge/iminthewalls.com-8B5CF6?style=flat&logo=googlechrome&logoColor=white)](https://iminthewalls.com/) |
-| **[Honeypot Network](./PROJECTS/advanced/honeypot-network)**<br>Multi-service honeypot deployment & analysis | ![2-3w](https://img.shields.io/badge/⏱️_2--3w-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Honeypot deployment • Attacker behavior analysis • IOC extraction • MITRE mapping<br>[Source Code](./PROJECTS/advanced/honeypot-network) \| [Docs](./PROJECTS/advanced/honeypot-network/learn)<br>[![honeypot-network.carterperez-dev.com](https://img.shields.io/badge/honeypot--network.carterperez--dev.com-8B5CF6?style=flat&logo=googlechrome&logoColor=white)](https://honeypot-network.carterperez-dev.com/) |
-| **[Supply Chain Security Analyzer](./SYNOPSES/advanced/Supply.Chain.Security.Analyzer.md)**<br>Dependency vulnerability analysis | ![2-3w](https://img.shields.io/badge/⏱️_2--3w-blue) ![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white) ![Advanced](https://img.shields.io/badge/●_Advanced-red) | Supply chain security • Dependency analysis • Malicious packages<br>[Learn More](./SYNOPSES/advanced/Supply.Chain.Security.Analyzer.md) |
+```
++----------------------------------------------------------------------------------------------------+
+|                                    DISTRIBUTED LOG INGESTION LAYER                                 |
+|  [Windows Event Logs]       [Syslog / RFC 5424]       [Network Firewalls]       [Cloud Audit Logs] |
++----------------------------------------------------------------------------------------------------+
+                                                  │
+                                                  ▼
++────────────────────────────────────────────────────────────────────────────────────────────────────+
+|                                    REDIS STREAMS BUFFER & PUB/SUB                                  |
+|  - Ingestion FIFO Queues (`stream:logs`)               - Asynchronous Real-Time Event Dispatch      |
+|  - Backpressure Absorption & Rate Limiting             - SSE Broadcast Channel (`stream:alerts`)   |
++────────────────────────────────────────────────────────────────────────────────────────────────────+
+                                                  │
+                  ┌───────────────────────────────┴───────────────────────────────┐
+                  ▼                                                               ▼
++───────────────────────────────────────────────+ +──────────────────────────────────────────────────+
+|           EVENT PERSISTENCE TIER              | |           REAL-TIME CORRELATION ENGINE           |
+|  [MongoDB Time-Series / Document Store]       | |  - Threshold-Based Anomaly Detectors             |
+|  - Raw & Normalized Log Repositories          | |  - State-Machine Multi-Stage Attack Chains       |
+|  - Aggregation Time-Bucketing Pipelines       | |  - Sliding Window Aggregation Correlators        |
+|  - Cryptographic Chain-of-Custody Store       | |  - Sigma Rule Evaluator & YAML Exporter          |
++───────────────────────────────────────────────+ +──────────────────────────────────────────────────+
+                  │                                                               │
+                  └───────────────────────────────┬───────────────────────────────┘
+                                                  ▼
++────────────────────────────────────────────────────────────────────────────────────────────────────+
+|                                FLASK CORE REST & STREAMING API (PORT 5000)                         |
+|  - JWT / Argon2id Authentication & RBAC               - SSE Real-Time Streaming (`/v1/alerts/stream`)|
+|  - MITRE ATT&CK® Correlation Engine                   - Threat Intelligence Orchestrator (TI)      |
+|  - SOAR Automated Containment Dispatcher              - UEBA Statistical Scoring Engine            |
+|  - HMAC-SHA256 Digital Forensic Signature Service     - Scenario Simulation Controller             |
++────────────────────────────────────────────────────────────────────────────────────────────────────+
+                                                  │
+                  ┌───────────────────────────────┴───────────────────────────────┐
+                  ▼                                                               ▼
++───────────────────────────────────────────────+ +──────────────────────────────────────────────────+
+|            ACTIVE SOAR CONTAINMENT            | |         THREAT INTELLIGENCE ENRICHMENT           |
+|  - Automated Firewall IP Drop (iptables/null) | |  - AbuseIPDB Confidence Scores                   |
+|  - Host Isolation / Quarantine (eBPF/EDR)     | |  - VirusTotal Malware & Hash Lookups             |
+|  - IAM Credential Revocation & Token Flush    | |  - AlienVault OTX Threat Pulses & Shodan Lookup  |
++───────────────────────────────────────────────+ +──────────────────────────────────────────────────+
+                                                  │
+                                                  ▼
++────────────────────────────────────────────────────────────────────────────────────────────────────+
+|                                 ANALYST COMMAND CONSOLE (PORT 5173)                                |
+|  - React 19 + TypeScript + Vite + Zustand              - Visx Time-Series Graph with Local Time Nav|
+|  - MITRE ATT&CK Enterprise Matrix Navigator Modal      - Real-Time Audio Alerter & FFT Visualizer  |
+|  - 30s Unacknowledged Alert Escalation Watchdog        - WCAG AA High-Contrast SOC Theme Polish    |
+|  - 1-Click Forensic Incident Report Generator (MD)     - Optimistic UI Transitions & IOC Cloner    |
++────────────────────────────────────────────────────────────────────────────────────────────────────+
+```
 
 ---
 
-## Big Thanks to all the sponsors! 🩵
-- [@CoolCat-108](https://github.com/CoolCat-108)
+## 🔄 Execution & Incident Lifecycle Flowcharts
 
+### 1. End-to-End Log Ingestion & Detection Flow
+```mermaid
+flowchart TD
+    A["Raw Log Ingestion\n(Syslog / JSON / WinEvent)"] --> B["Schema Validation & Normalization\n(Pydantic & Source Classifier)"]
+    B --> C["Redis Streams Message Queue\n(stream:logs)"]
+    C --> D["Correlation Rule Engine\n(Threshold / Sequence / Aggregation)"]
+    D --> E{"Rule Criteria Matched?"}
+    E -- No --> F["Persist Raw Log to MongoDB"]
+    E -- Yes --> G["Construct Alert Object\n(Severity, MITRE Tactic, IOCs)"]
+    G --> H["UEBA Anomaly Scoring &\nThreat Intel Auto-Lookup"]
+    H --> I["Cryptographic Forensic Seal\n(HMAC-SHA256 Non-Repudiation)"]
+    I --> J["Save Alert in MongoDB"]
+    J --> K["Publish to Redis Pub/Sub\n(stream:alerts)"]
+    K --> L["SSE Broadcast to Connected\nAnalyst Consoles"]
+    L --> M["Trigger Web Audio Alerter &\nPulse Visualizer Pill"]
+    M --> N["Start 30-Second Escalation\nWatchdog Timer"]
+```
 
-## Learn More
+### 2. Multi-Stage Attack Correlation & Kill Chain Progression
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Attacker
+    participant Net as Network Boundary
+    participant SIEM as Correlation Engine
+    participant UEBA as UEBA & Kill Chain
+    participant SOC as Analyst Console
+    participant SOAR as SOAR Containment
 
-**[Certification Roadmaps](./ROADMAPS/README.md)** - Career paths for SOC Analyst, Pentester, Security Engineer, GRC Analyst, and 6 more tracks
+    Attacker->>Net: 1. SSH / RDP Brute Force Attempt
+    Net->>SIEM: Ingest 15 Failed Logins within 30s
+    SIEM->>SIEM: Threshold Rule: "Multiple Failed Logins" Triggered
+    SIEM->>UEBA: Update Target Host Entity Context
+    UEBA-->>SOC: Stage 1 Alert: Initial Access (T1110)
 
-**[Learning Resources](./RESOURCES/README.md)** - Tools, courses, certifications, YouTube channels, Reddit communities, and security frameworks
+    Attacker->>Net: 2. Sudo Priv Escalation / sudoers Edit
+    Net->>SIEM: Ingest Syslog Auth Privilege Change
+    SIEM->>UEBA: Correlate with Previous Host Failure
+    UEBA-->>SOC: Stage 2 Alert: Privilege Escalation (T1068)
 
-**[CertGames](https://certgames.com)** - The platform I built to do all of this in one place: practice questions, Learn lessons, guided projects, and these roadmaps with progress tracking. FREE
+    Attacker->>Net: 3. High-Frequency TXT Record DNS Requests
+    Net->>SIEM: Sequence Rule: DNS Tunneling Exfiltration
+    SIEM->>UEBA: Upgrade Risk Score to 95/100 (CRITICAL)
+    UEBA-->>SOC: Stage 3 Alert: Exfiltration & C2 (T1071.004)
+    SOC->>SOAR: Trigger 1-Click Containment
+    SOAR->>Net: Push Firewall Blacklist & Isolate Host
+    SOAR-->>SOC: Containment Verified & Audit Logged
+```
 
+### 3. Alert Lifecycle & SOAR Automated Containment
+```mermaid
+stateDiagram-v2
+    [*] --> New: Detection Engine Match
+    New --> Acknowledged: Analyst Claims Alert
+    New --> CriticalRepeater: 30s Without Action (Urgent Audio Alarm)
+    CriticalRepeater --> Acknowledged: Analyst Intervenes
+    Acknowledged --> Investigating: Deep Pivot Analysis
+    Investigating --> SOARContainment: Malicious IOC Confirmed
+    SOARContainment --> HostQuarantined: Host Isolation Protocol
+    SOARContainment --> IPBlocked: Perimeter Firewall Drop
+    SOARContainment --> TokenRevoked: IAM Session Invalidation
+    HostQuarantined --> Resolved: Threat Neutralized & Verified
+    IPBlocked --> Resolved: Threat Neutralized & Verified
+    TokenRevoked --> Resolved: Threat Neutralized & Verified
+    Investigating --> FalsePositive: Whitelisted benign activity
+    Resolved --> ForensicReport: Export Cryptographic HMAC Audit MD
+    FalsePositive --> [*]
+    ForensicReport --> [*]
+```
 
-## License
+---
 
-[AGPL 3.0](LICENSE).
+## 🎯 Key Functions & Modules
+
+| Module | Core Functionality | Technical Highlights |
+| :--- | :--- | :--- |
+| **Real-Time Correlation Engine** | Evaluates live streaming events against composite stateful rules. Supports **Threshold** (rate anomalies), **Sequence** (multi-stage progression within time window), and **Aggregation** (group-by deviations). | In-memory sliding windows with Redis Streams; sub-10ms evaluation latency. |
+| **Active SOAR Defense** | Executes containment workflows straight from the alert triage view: Automated Firewall IP Drop, Host Network Isolation, and IAM Session Invalidation. | RESTful containment API, mockable defense drivers, execution audit logging. |
+| **MITRE ATT&CK® Navigator** | Dynamic interactive enterprise matrix mapping alerts across all 14 tactics (Reconnaissance to Impact). Displays coverage heatmaps and technique definitions. | Visual modal overlay, color-coded technique densities, direct filtering by tactic. |
+| **Threat Intelligence (TI)** | Automatic IOC reputation lookup and external correlation. | AbuseIPDB confidence score, VirusTotal malicious votes, AlienVault OTX pulses, and Shodan linkouts. |
+| **UEBA & Anomaly Engine** | User & Entity Behavior Analytics calculates baseline deviation scores (0–100) based on source IPs, user accounts, and off-hour activity. | Cyber Kill Chain progression tracker correlating multi-stage incidents across time. |
+| **Sigma Rule Standard** | Translates SIEM detection filters into standard Sigma YAML syntax for vendor-agnostic rule interchange. | Native Sigma YAML export, syntax-highlighted editor, interoperable with SOC Prime & SigmaHQ. |
+| **Forensic Integrity Hub** | Generates tamper-proof HMAC-SHA256 digital seals for every alert. Produces court-admissible Markdown case summaries. | Cryptographic verification banner, immutable event hashes, non-repudiation audit trails. |
+| **SOC Tactical Interface** | Web Audio alert chimes, live audio frequency visualizer pill, 30s alert re-escalation watchdog, and dual-coded geometric severity badges (`⬢`, `▲`, `◆`, `●`). | Zero-latency Web Audio API synthesizer, Zustand notification bell store, WCAG AA dark palette. |
+| **Time-Travel Graph Controls** | Interactive time-series event timeline with local timezone calibration (`+05:30` / IST), 1H–30D presets, and historical day stepping. | `@visx/xychart` with localized bottom axis formatting, responsive container resizing, and zero-fill continuous bucketing. |
+| **Adversary Simulator** | Generates real-world realistic multi-stage cyber attacks for analyst training and rule verification. | Pre-configured playbooks: SSH Brute Force, DNS Tunneling, Phishing Payload, and Linux Sudo Privilege Escalation. |
+
+---
+
+## 💼 Real-World Use Cases
+
+### 1. Automated Credential Stuffing Mitigation
+- **Scenario**: A distributed botnet attempts tens of thousands of authentication attempts against an organization's public VPN endpoint.
+- **Platform Response**: The Aggregation Correlator detects $>10$ failed authentications for distinct usernames from a single subnet in 60 seconds. The platform automatically triggers SOAR firewall blocking, alerts the SOC, queries AbuseIPDB for subnet reputation, and displays the `T1110.004 (Credential Stuffing)` MITRE badge.
+
+### 2. Covert DNS Data Exfiltration
+- **Scenario**: An infected workstation queries thousands of pseudo-random subdomains (DGA) to sneak encrypted intellectual property past corporate proxies.
+- **Platform Response**: The Sequence Correlator tracks high-frequency TXT/NULL record requests, flags entropy anomalies, and calculates a UEBA score of 88/100. The analyst clicks **Host Network Isolation** to sever the endpoint's socket connections immediately.
+
+### 3. Insider Threat & Privilege Abuse
+- **Scenario**: A compromised contractor account accesses sensitive databases outside of business hours and alters system configuration files.
+- **Platform Response**: UEBA identifies abnormal login hours coupled with unauthorized `sudoers` modification. A High-Severity alert sounds the tactical audio chime. If unacknowledged within 30 seconds, the system re-alarms the shift lead.
+
+### 4. Zero-Day Community Threat Hunting (Sigma)
+- **Scenario**: A new CVE is disclosed with published Sigma detection rules on GitHub.
+- **Platform Response**: Security engineers paste the Sigma YAML rule directly into the Rules Manager. The platform's translator parses log sources, conditions, and tags into native SIEM threshold criteria without restarting services.
+
+### 5. Regulatory Compliance & Forensic Audit Preparation
+- **Scenario**: External auditors require tamper-proof proof of containment during a ransomware investigation.
+- **Platform Response**: The SOC exports the incident's HMAC-SHA256 cryptographically sealed report, complete with verified timestamps, non-repudiation signatures, and containment execution proofs.
+
+---
+
+## ⚖️ Comprehensive Comparison: Why Choose This Platform?
+
+| Capability | This Platform | Splunk Enterprise Security | Elastic Security (ELK) | Microsoft Sentinel | Wazuh (OSSEC) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Ingestion Pipeline** | **Ultra-Low Latency Redis Streams** | Heavy Forwarders / Splunk Indexers | Logstash / Beats / Kafka | Azure Monitor Agent | Wazuh Agent daemon |
+| **Native SOAR (1-Click Defense)** | **Built-in (Zero extra cost)** | Separate tool (Splunk SOAR / Phantom) | Limited basic action rules | Requires Azure Logic Apps (Paid) | Active Response scripts only |
+| **MITRE ATT&CK Matrix Navigator** | **Built-in Real-Time Interactive Matrix** | Premium App add-on | Pre-built rules matrix | Workbooks add-on | Static rule mapping |
+| **Sigma Rule Standard** | **Native YAML View & Translation** | Requires external `sigmac` tool | Partial EQL support | Requires KQL translation | Requires translation |
+| **Forensic Cryptographic Seal** | **HMAC-SHA256 Non-Repudiation** | Paid Audit compliance app | Third-party hashing required | Azure Immutable Storage (Cost) | Digest verification |
+| **Hardware & Resource Footprint** | **Minimal (~250 MB RAM, runs natively)** | Extremely Heavy (16–32 GB RAM min) | Heavy (8–16 GB RAM min) | Cloud-only (Azure billing overhead) | Moderate (4–8 GB RAM) |
+| **Attack Scenario Simulation Engine** | **Built-in multi-stage playbooks** | External (Splunk Attack Range) | None (Requires external tools) | None (Requires Azure test scripts) | None |
+| **Cost & Licensing** | **Open Source (AGPLv3)** | \$1,500+ / GB/day licensing | Elastic tiered subscription | Pay-per-GB ingestion billing | Open Source |
+
+---
+
+## 🚀 Quick Start Guide
+
+### System Prerequisites
+- **Python**: 3.10, 3.11, or 3.12
+- **Node.js**: v18.0.0 or higher & `pnpm` (or `npm`)
+- **MongoDB**: v7.0 or v8.0 running on `localhost:27017`
+- **Redis**: v7.x running on `localhost:6379`
+
+---
+
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/vidhi726/siem.git
+cd siem
+```
+
+---
+
+### Step 2: Backend Configuration & Startup
+```bash
+# Navigate to the backend directory
+cd PROJECTS/intermediate/siem-dashboard/backend
+
+# Create and activate Python virtual environment
+python -m venv .venv
+
+# Windows:
+.\.venv\Scripts\activate
+# Linux/macOS:
+# source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run database seed to populate users, rules, and scenarios
+python -m scripts.seed
+
+# Launch Flask API server (Port 5000)
+python -m flask run --host 0.0.0.0 --port 5000
+```
+
+---
+
+### Step 3: Frontend Installation & Launch
+```bash
+# In a new terminal, navigate to the frontend directory
+cd PROJECTS/intermediate/siem-dashboard/frontend
+
+# Install frontend packages
+pnpm install
+
+# Start Vite development server (Port 5173)
+pnpm run dev --host 0.0.0.0 --port 5173
+```
+
+---
+
+### Step 4: Docker Compose Deployment (One-Click)
+```bash
+# In the project root or siem-dashboard directory:
+docker compose up -d
+```
+The full platform will be live at `http://localhost:5173` (or `http://localhost:8431` via Docker).
+
+---
+
+## 🔑 Default Credentials
+
+| Role | Username | Password | Permissions |
+| :--- | :--- | :--- | :--- |
+| **Administrator** | `admin` | `Password123!` | Full admin access, Rule creation, SOAR containment, User management |
+| **SOC Analyst** | `analyst` (or `vidhi`) | `Password123!` | Alert triage, Incident investigation, Forensics export, Scenario triggers |
+
+---
+
+## 📡 REST API & Streaming Endpoints
+
+### Authentication (`/v1/auth`)
+- `POST /v1/auth/login` — Authenticate and receive JWT access & refresh tokens.
+- `GET /v1/auth/me` — Retrieve authenticated user profile and permissions.
+
+### Analytics & Dashboard (`/v1/dashboard`)
+- `GET /v1/dashboard` — High-level SOC metrics, event counts, open alert ratios.
+- `GET /v1/dashboard/timeline?hours=24&bucket_minutes=15&offset_days=0` — Localized, continuous time-series telemetry.
+- `GET /v1/dashboard/severity-breakdown` — Severity distribution metrics.
+- `GET /v1/dashboard/top-sources?limit=10` — Highest-volume suspicious source IPs.
+
+### Alerts & SOAR (`/v1/alerts`)
+- `GET /v1/alerts` — Paginated, filterable alerts with MITRE tactics and severity levels.
+- `GET /v1/alerts/<id>` — Deep inspection of alert, matched logs, and forensic hash.
+- `PATCH /v1/alerts/<id>/status` — Optimistic state updates (`new`, `acknowledged`, `investigating`, `resolved`).
+- `POST /v1/alerts/<id>/soar` — Execute active containment action (`block_ip`, `isolate_host`, `revoke_credentials`).
+- `GET /v1/alerts/mitre-matrix` — Comprehensive MITRE ATT&CK coverage matrix JSON.
+- `GET /v1/alerts/stream` — Real-time Server-Sent Events (SSE) alert broadcast stream.
+
+### Detection Rules & Sigma (`/v1/rules`)
+- `GET /v1/rules` — List active detection rules (Threshold, Sequence, Aggregation).
+- `POST /v1/rules` — Register new custom correlation rule.
+- `GET /v1/rules/<id>/sigma` — Export rule in standard Sigma YAML specification.
+- `POST /v1/rules/<id>/test` — Dry-run rule against historical telemetry.
+
+### Attack Scenarios (`/v1/scenarios`)
+- `GET /v1/scenarios/available` — List adversary simulation playbooks.
+- `POST /v1/scenarios/start` — Launch multi-stage attack playback.
+- `POST /v1/scenarios/<runId>/stop` — Terminate active simulation.
+
+---
+
+## 🛡️ Security & Integrity Philosophy
+1. **Zero Raw Log Modification**: Log entries are treated as read-only write-once telemetry. Normalization occurs non-destructively in secondary data fields.
+2. **Cryptographic Chain of Custody**: Alerts and incident snapshots are signed with an HMAC-SHA256 key to guarantee verifiable authenticity in legal proceedings.
+3. **Defense in Depth**: Combines signature-based rules (Sigma), behavioral anomaly detection (UEBA), external reputation correlation (Threat Intel), and active containment (SOAR).
+
+---
+
+## 👩‍💻 Author & Repository
+- **Author**: Vidhi Doshi ([@vidhi726](https://github.com/vidhi726))
+- **Repository**: [https://github.com/vidhi726/siem](https://github.com/vidhi726/siem)
+- **License**: GNU Affero General Public License v3.0 ([AGPL-3.0](LICENSE))
