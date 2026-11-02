@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minor Project Presentation - Vidhi Doshi (1AUA24BCS904)</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.4);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border: #1f2937;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .deck-container {
+      position: relative;
+      width: 90vw;
+      max-width: 1200px;
+      height: 80vh;
+      max-height: 675px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .slide-header {
+      padding: 16px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(17, 24, 39, 0.8);
+      backdrop-filter: blur(8px);
+    }
+
+    .slide-header .brand {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-header .uni {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .slide-body {
+      flex: 1;
+      padding: 36px 48px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .slide-body.active {
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-footer {
+      padding: 12px 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: rgba(17, 24, 39, 0.8);
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      background: var(--border);
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover:not(:disabled) {
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p, .card li {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: #d1d5db;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 13.5px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    td {
+      color: #d1d5db;
+    }
+
+    .highlight {
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-success { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .badge-warning { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    .badge-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+    pre {
+      background: #030712;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'Consolas', monospace;
+      font-size: 13px;
+      color: #67e8f9;
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck-container">
+    <!-- Header -->
+    <div class="slide-header">
+      <div class="brand">
+        <span>🛡️</span>
+        <span>Adani University • B.Tech Minor Project</span>
+      </div>
+      <div class="uni">Department of CSE (AI-ML) | Academic Year 2026-2027</div>
+    </div>
+
+    <!-- Slide 1: Title -->
+    <div class="slide-body active" id="slide-1">
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+        <div style="display: inline-block; margin-bottom: 12px;">
+          <span class="badge badge-success">B.Tech Minor Project Presentation</span>
+        </div>
+        <h1 style="font-size: 32px; max-width: 950px; margin: 0 auto 16px auto;">
+          Next-Generation Enterprise SIEM & SOAR Platform
+        </h1>
+        <p style="font-size: 18px; color: var(--accent); margin-bottom: 24px;">
+          Real-Time Threat Correlation, MITRE ATT&CK® Mapping, UEBA, Sigma Rules & Cryptographic Forensics
+        </p>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 20px; max-width: 650px; margin: 0 auto; text-align: left;">
+          <p style="margin-bottom: 6px;"><strong>Candidate:</strong> Vidhi Doshi (Enrollment: <span class="highlight">1AUA24BCS904</span>)</p>
+          <p style="margin-bottom: 6px;"><strong>Degree:</strong> Bachelor of Technology in CSE (AI-ML)</p>
+          <p style="margin-bottom: 6px;"><strong>Department:</strong> Department of CSE (AI-ML), Faculty of Engineering Sciences and Technology</p>
+          <p style="margin-bottom: 0;"><strong>Institution:</strong> Adani University, Ahmedabad – 382421, India</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Problem Statement -->
+    <div class="slide-body" id="slide-2">
+      <h2>01. Problem Statement & Motivation</h2>
+      <p>Modern Security Operations Centers (SOCs) are overwhelmed by attack velocity and fragmented tools.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>⚠️ Excessive Ingestion & Detection Delays</h3>
+          <p>Traditional SIEMs rely on batch searches running every 3 to 15 minutes, allowing cyber adversaries to establish persistence and move laterally before detection.</p>
+        </div>
+        <div class="card">
+          <h3>⚡ Severe Alert Fatigue</h3>
+          <p>Analysts are inundated by hundreds of unranked, context-deficient alerts lacking MITRE ATT&CK taxonomy or external reputation scoring.</p>
+        </div>
+        <div class="card">
+          <h3>🛑 Passive Architecture (Zero Active Defense)</h3>
+          <p>Legacy SIEM platforms merely log events. Mitigating an attack requires manual intervention or expensive separate SOAR tools, inflating MTTR.</p>
+        </div>
+        <div class="card">
+          <h3>💰 Prohibitive Data Volume Costs</h3>
+          <p>Commercial licensing models charge $1,200–$2,000 per GB/day, forcing organizations to discard security logs and create dangerous visibility gaps.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Objectives -->
+    <div class="slide-body" id="slide-3">
+      <h2>02. Project Objectives & Scope</h2>
+      <ul>
+        <li><strong>Sub-Second Stream Analytics:</strong> Decouple ingestion from correlation using Redis Streams to achieve &gt;25,000 events/second throughput.</li>
+        <li><strong>Composite Detection Paradigms:</strong> Support sliding-window Threshold, Sequence, and Aggregation rules.</li>
+        <li><strong>Unified 1-Click SOAR:</strong> Direct execution of perimeter firewall drops, host network quarantine, and IAM token revocation.</li>
+        <li><strong>MITRE ATT&CK® Enterprise Navigator:</strong> Real-time interactive matrix mapping coverage across all 14 tactics.</li>
+        <li><strong>Cryptographic Non-Repudiation:</strong> HMAC-SHA256 digital seals ensuring evidence integrity for forensic audit reports.</li>
+        <li><strong>Analyst Tactical Cockpit:</strong> React 19 UI with Web Audio alarm chimes, visualizer pill, and local timezone time navigation.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 4: System Architecture -->
+    <div class="slide-body" id="slide-4">
+      <h2>03. System Architecture & High-Level Design</h2>
+      <p>A decoupled, event-driven microservices architecture partitioned into stream, correlation, storage, and presentation layers:</p>
+      <pre>
+┌────────────────────────────────────────────────────────────────────────┐
+│                        LOG INGESTION TIER                              │
+│       [Windows Events]   [Syslog RFC 5424]   [Network Firewalls]       │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                        REDIS STREAMS BUFFER                            │
+│           FIFO Ingestion Queue (`stream:logs`) - Zero Drop             │
+└───────────────────┬────────────────────────────────┬───────────────────┘
+                    ▼                                ▼
+┌──────────────────────────────────────┐ ┌───────────────────────────────┐
+│       EVENT PERSISTENCE (MONGODB)    │ │   CORRELATION ENGINE WORKER   │
+│  Time-Series & Document Storage      │ │   Threshold / Sequence / Aggr │
+└───────────────────┬──────────────────┘ └───────────────┬───────────────┘
+                    └───────────────────┬────────────────┘
+                                        ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│              FLASK CORE API & SERVER-SENT EVENTS (SSE STREAM)          │
+│   • MITRE ATT&CK Mapping     • Threat Intel Hub     • SOAR Dispatcher  │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                    REACT 19 ANALYST COMMAND CONSOLE                    │
+│   • Web Audio Alerter   • Localized Time Scaling   • WCAG AA Theme     │
+└────────────────────────────────────────────────────────────────────────┘</pre>
+    </div>
+
+    <!-- Slide 5: Correlation Paradigms -->
+    <div class="slide-body" id="slide-5">
+      <h2>04. Multi-Paradigm Correlation Engine</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>1. Threshold Rules</h3>
+          <p>Flags volumetric spikes exceeding frequency thresholds within sliding windows.</p>
+          <p class="highlight">Example: >5 failed login attempts from a single source IP in 60s.</p>
+        </div>
+        <div class="card">
+          <h3>2. Sequence Rules</h3>
+          <p>Identifies multi-stage attack chains executed in strict temporal order.</p>
+          <p class="highlight">Example: Recon Port Scan followed by Auth Failure and Privilege Escalation.</p>
+        </div>
+        <div class="card">
+          <h3>3. Aggregation Rules</h3>
+          <p>Detects statistical anomalies across dynamic group-by keys.</p>
+          <p class="highlight">Example: Single IP attempting logins across >10 distinct usernames (Password Spraying).</p>
+        </div>
+        <div class="card">
+          <h3>4. Sigma Rule Interoperability</h3>
+          <p>Bi-directional YAML translation allowing direct import/export of global Sigma community rules.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Active SOAR -->
+    <div class="slide-body" id="slide-6">
+      <h2>05. Active SOAR Defense (1-Click & Policy Actions)</h2>
+      <p>Transforms the SIEM from a passive observer into an active response platform:</p>
+      <div class="grid-2">
+        <div class="card" style="border-left: 4px solid var(--danger);">
+          <h3>🔥 Perimeter Firewall IP Drop</h3>
+          <p>Pushes dynamic blocklist rules to perimeter firewalls or iptables, terminating inbound C2 connections instantly.</p>
+          <span class="badge badge-danger">1-Click Containment</span>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--warning);">
+          <h3>🔒 Host Network Isolation</h3>
+          <p>Commands endpoint EDR / eBPF agents to isolate compromised endpoints, severing non-management socket traffic.</p>
+          <span class="badge badge-warning">Host Quarantine</span>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--accent);">
+          <h3>👤 IAM Credential Revocation</h3>
+          <p>Invalidates active JSON Web Tokens (JWT) and flushes session stores to prevent lateral movement.</p>
+          <span class="badge badge-success">Session Purge</span>
+        </div>
+        <div class="card" style="border-left: 4px solid #a855f7;">
+          <h3>📝 Cryptographic Audit Logging</h3>
+          <p>All executed containment actions are immutably signed with UTC timestamps and analyst identities.</p>
+          <span class="badge badge-success">Non-Repudiation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: MITRE ATT&CK -->
+    <div class="slide-body" id="slide-7">
+      <h2>06. MITRE ATT&CK® Enterprise Navigator</h2>
+      <p>Seamless alignment with the global adversary behavior standard:</p>
+      <ul>
+        <li><strong>14 Tactical Phases:</strong> Comprehensive coverage from <em>Reconnaissance</em> and <em>Initial Access</em> through <em>Exfiltration</em> and <em>Impact</em>.</li>
+        <li><strong>Interactive Matrix Heatmap:</strong> Visual modal highlighting technique density and active alerts in real time.</li>
+        <li><strong>Drill-Down Investigation:</strong> Clicking any technique cell (e.g., <code>T1110.001</code>) filters the alert stream to matching incidents.</li>
+        <li><strong>Scenario Mapping:</strong> All simulated attacks automatically update their corresponding tactical heatmap cells.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 8: Threat Intel & UEBA -->
+    <div class="slide-body" id="slide-8">
+      <h2>07. Threat Intelligence & UEBA Anomaly Scoring</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>🌐 Multi-Source Threat Intelligence</h3>
+          <ul>
+            <li><strong>AbuseIPDB:</strong> Real-time IP confidence-of-abuse percentages.</li>
+            <li><strong>VirusTotal:</strong> File hash and URL reputation across 70+ engines.</li>
+            <li><strong>AlienVault OTX:</strong> Community threat pulses and actor attribution.</li>
+            <li><strong>Shodan:</strong> Open port and vulnerable service reconnaissance.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🧠 UEBA Behavioral Scoring</h3>
+          <ul>
+            <li>Calculates dynamic risk anomaly scores (0 to 100) per entity.</li>
+            <li>Baselines normal user login hours and egress bandwidth.</li>
+            <li>Flags off-hours administrative access and high-entropy DNS queries.</li>
+            <li>Tracks multi-stage kill chain progression over time.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 9: Forensics -->
+    <div class="slide-body" id="slide-9">
+      <h2>08. Cryptographic Forensics & Chain-of-Custody</h2>
+      <p>Ensuring tamper-evident non-repudiation for legal and regulatory compliance:</p>
+      <div class="card" style="margin-bottom: 20px;">
+        <h3>🔐 HMAC-SHA256 Digital Sealing</h3>
+        <p>Every generated alert is bound to a cryptographic HMAC signature combining:
+        <code>Alert ID + Rule ID + Timestamp + Severity + Matched Event IDs</code>.</p>
+        <p class="highlight">If an attacker modifies database records post-compromise, the signature check fails immediately.</p>
+      </div>
+      <div class="card">
+        <h3>📄 1-Click Forensic Case Dossier</h3>
+        <p>Exports complete incident Markdown reports containing verified digital signatures, matched log telemetry, and containment execution audits ready for court presentation.</p>
+      </div>
+    </div>
+
+    <!-- Slide 10: Adversary Simulator -->
+    <div class="slide-body" id="slide-10">
+      <h2>09. Real-World Adversary Simulation Engine</h2>
+      <p>Four pre-configured playbooks to validate detection rules and train analysts:</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>1. SSH / RDP Brute Force</h3>
+          <p>Generates rapid failed authentication bursts, triggering Credential Access alerts (T1110).</p>
+        </div>
+        <div class="card">
+          <h3>2. DNS Tunneling Exfiltration</h3>
+          <p>Queries high-entropy pseudo-random subdomains to simulate covert C2 exfiltration (T1071.004).</p>
+        </div>
+        <div class="card">
+          <h3>3. Phishing Credential Theft</h3>
+          <p>Emulates user credential submission to suspicious external landing pages (T1566).</p>
+        </div>
+        <div class="card">
+          <h3>4. Linux Sudo Privilege Escalation</h3>
+          <p>Simulates unauthorized privilege escalation via sudoers manipulation (T1068).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 11: Tactical SOC Interface -->
+    <div class="slide-body" id="slide-11">
+      <h2>10. Tactical SOC Interface Innovations</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>🔊 Web Audio Synthesizer & Visualizer</h3>
+          <p>Procedural Web Audio synthesizer triggers crisp sound chimes on high/critical alerts; an animated FFT visualizer pill displays active audio output.</p>
+        </div>
+        <div class="card">
+          <h3>⏱️ 30s Escalation Watchdog</h3>
+          <p>Automatically re-alarms the SOC with persistent chimes if a critical alert remains unacknowledged for >30 seconds.</p>
+        </div>
+        <div class="card">
+          <h3>📈 Localized Time Travel Timeline</h3>
+          <p>Visx chart calibrated to user local timezone (IST +05:30) with 1H–30D presets and historical day-by-day stepping.</p>
+        </div>
+        <div class="card">
+          <h3>🎨 WCAG 2.1 AA Compliance</h3>
+          <p>High-contrast dark theme with dual-coded geometric severity symbols (⬢, ▲, ◆, ●) for colorblind accessibility.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 12: Comparison Table -->
+    <div class="slide-body" id="slide-12">
+      <h2>11. Platform Comparison: Proposed vs Industry</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature / Capability</th>
+            <th>Proposed Platform</th>
+            <th>Splunk Enterprise</th>
+            <th>Elastic Security</th>
+            <th>MS Sentinel</th>
+            <th>Wazuh</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ingestion Engine</strong></td>
+            <td class="highlight">Redis Streams (Sub-sec)</td>
+            <td>Heavy Forwarders</td>
+            <td>Logstash / Beats</td>
+            <td>Azure Agent</td>
+            <td>Agent Daemon</td>
+          </tr>
+          <tr>
+            <td><strong>Native 1-Click SOAR</strong></td>
+            <td class="highlight">Built-in (Zero Cost)</td>
+            <td>Separate Product</td>
+            <td>Basic Connectors</td>
+            <td>Logic Apps ($)</td>
+            <td>Scripts Only</td>
+          </tr>
+          <tr>
+            <td><strong>MITRE ATT&CK Matrix</strong></td>
+            <td class="highlight">Interactive Real-Time</td>
+            <td>Paid App Addon</td>
+            <td>Prebuilt Rules</td>
+            <td>Workbooks</td>
+            <td>Static Mapping</td>
+          </tr>
+          <tr>
+            <td><strong>Forensic HMAC Seal</strong></td>
+            <td class="highlight">Built-in Non-Repudiation</td>
+            <td>Paid Compliance App</td>
+            <td>Third-Party Hash</td>
+            <td>Azure Blob ($)</td>
+            <td>Digest Verify</td>
+          </tr>
+          <tr>
+            <td><strong>RAM Footprint</strong></td>
+            <td class="highlight">~250 MB Baseline</td>
+            <td>16–32 GB min</td>
+            <td>8–16 GB min</td>
+            <td>Cloud Managed</td>
+            <td>4–8 GB</td>
+          </tr>
+          <tr>
+            <td><strong>Licensing</strong></td>
+            <td class="highlight">Open Source (AGPLv3)</td>
+            <td>$1,500+/GB/day</td>
+            <td>Tiered Sub</td>
+            <td>Pay-per-GB</td>
+            <td>Open Source</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Slide 13: Benchmarks & Results -->
+    <div class="slide-body" id="slide-13">
+      <h2>12. Experimental Benchmarks & Verification</h2>
+      <ul>
+        <li><strong>Verification Pass Rate:</strong> <span class="badge badge-success">100% Pass</span> across all 8 core test suites (Ingestion, Correlation, SOAR, HMAC, UI).</li>
+        <li><strong>Evaluation Latency:</strong> Sub-10 millisecond rule evaluation under continuous streaming telemetry.</li>
+        <li><strong>Ingestion Throughput:</strong> Sustained 1,000 logs in &lt;0.5 seconds with zero dropped packets.</li>
+        <li><strong>Frontend Production Build:</strong> Vite compiled complete bundle in <strong>5.11 seconds</strong> with 0 errors (&lt;205 kB gzip).</li>
+        <li><strong>Detection Fidelity:</strong> 100% detection rate across all 4 multi-stage adversary playbooks.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 14: Conclusion -->
+    <div class="slide-body" id="slide-14">
+      <h2>13. Conclusion & Future Roadmap</h2>
+      <div class="card" style="margin-bottom: 20px;">
+        <h3>🎯 Conclusion</h3>
+        <p>Successfully designed and deployed a production-grade, sub-second latency SIEM & SOAR platform that bridges detection with automated defense while guaranteeing cryptographic evidentiary integrity.</p>
+      </div>
+      <div class="card">
+        <h3>🚀 Future Roadmap</h3>
+        <ul>
+          <li><strong>Deep Learning UEBA:</strong> Recurrent autoencoder networks for unsupervised anomaly clustering.</li>
+          <li><strong>Attack Path Graph Walkers:</strong> Graph traversal algorithms for visual attack path reconstruction.</li>
+          <li><strong>Blockchain Chain-of-Custody:</strong> Immutable multi-agency forensic ledger anchoring.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 15: Q&A & Demonstration -->
+    <div class="slide-body" id="slide-15">
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+        <h1 style="font-size: 38px; color: var(--accent); margin-bottom: 16px;">Questions & Live Demonstration</h1>
+        <p style="font-size: 18px; color: #fff; margin-bottom: 24px;">Thank you for your time and consideration!</p>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 24px; max-width: 600px; margin: 0 auto; text-align: left;">
+          <p><strong>GitHub Repository:</strong> <a href="https://github.com/vidhi726/siem" target="_blank" style="color: #60a5fa;">https://github.com/vidhi726/siem</a></p>
+          <p><strong>Candidate:</strong> Vidhi Doshi (1AUA24BCS904)</p>
+          <p><strong>Department:</strong> CSE (AI-ML), Adani University, Ahmedabad</p>
+          <p style="margin-bottom: 0;"><strong>Analyst Credentials:</strong> <code>analyst</code> / <code>Password123!</code></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Controls -->
+    <div class="slide-footer">
+      <div>Slide <span id="current-slide">1</span> of <span id="total-slides">15</span></div>
+      <div class="controls">
+        <button class="btn" id="prev-btn" onclick="prevSlide()">◀ Previous</button>
+        <button class="btn" id="next-btn" onclick="nextSlide()">Next ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let current = 1;
+    const total = 15;
+
+    function showSlide(n) {
+      document.querySelectorAll('.slide-body').forEach(el => el.classList.remove('active'));
+      const activeSlide = document.getElementById(`slide-${n}`);
+      if (activeSlide) activeSlide.classList.add('active');
+      document.getElementById('current-slide').innerText = n;
+      document.getElementById('prev-btn').disabled = (n === 1);
+      document.getElementById('next-btn').disabled = (n === total);
+    }
+
+    function nextSlide() {
+      if (current < total) { current++; showSlide(current); }
+    }
+
+    function prevSlide() {
+      if (current > 1) { current--; showSlide(current); }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+  </script>
+</body>
+</html>
